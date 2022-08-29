@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.footer {
+    background-color: #333;
+    padding: 40px;
+  }
+
+.footer_icons{
+  color: grey;
+  cursor: pointer;
+}
+
+.footer_icons:hover{
+  color: #63C2C7
+;
+}
