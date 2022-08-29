@@ -36,3 +36,53 @@
     transform: rotate(360deg);
   }
 }
+
+.footer {
+    background-color: #333;
+    padding: 40px;
+  }
+
+.footer_icons{
+  color: grey;
+  cursor: pointer;
+}
+
+.footer_icons:hover{
+  color: #63C2C7
+;
+}
+
+.drawer{
+  height: 100%;
+  background-color: #174C4F;
+  color: white;
+}
+
+.pageBody{
+  margin-left: 18%;
+  margin-top: 6%;
+  margin-right: 3%;
+}
+
+.nav-text {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  font-size: 25px;
+}
+
+.nav-text:hover{
+  color: #63C2C7;
+}
+
+.nav-text:active{
+  color: #63C2C7;
+}
+
+.drawer_icon{
+  color: white;
+}
+
+.drawer_icon:hover{
+  color: #63C2C7;
+}
