@@ -29,7 +29,7 @@ const Theme = createTheme({
   },
 });
 
-const EmpSideNavBar = (props) => {
+const AdminSideNavBar = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -39,15 +39,17 @@ const EmpSideNavBar = (props) => {
 
   const drawer = (
     <div className="drawer">
-      <img src="/LogoNoBg.png" alt="logo" width="80" height="80" />
+      <Link to="/">
+        <img src="/LogoNoBg.png" alt="logo" width="80" height="80" />
+      </Link>
       <List>
         {adminsidenavbarData.map((data, index) => (
           <ListItem key={index} disablePadding>
             <Link to={data.path} className={data.cName}>
-              <ListItemButton style={{ width: "235px", }}>
+              <ListItemButton style={{ width: "235px" }}>
                 <ListItemIcon
                   className="drawer_icon"
-                  style={{ color:"white" ,}}
+                  style={{ color: "white" }}
                 >
                   {data.icon}
                 </ListItemIcon>
@@ -69,7 +71,7 @@ const EmpSideNavBar = (props) => {
         <CssBaseline />
         <AppBar
           position="fixed"
-          style={{border:"none"}}
+          style={{ border: "none" }}
           sx={{
             width: { sm: `calc(100% - ${drawerWidth}px)` },
             ml: { sm: `${drawerWidth}px` },
@@ -86,7 +88,7 @@ const EmpSideNavBar = (props) => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              Employee Manager
+              Admin Dashboard
             </Typography>
           </Toolbar>
         </AppBar>
@@ -133,7 +135,7 @@ const EmpSideNavBar = (props) => {
   );
 };
 
-EmpSideNavBar.propTypes = {
+AdminSideNavBar.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -141,4 +143,4 @@ EmpSideNavBar.propTypes = {
   window: PropTypes.func,
 };
 
-export default EmpSideNavBar;
+export default AdminSideNavBar;

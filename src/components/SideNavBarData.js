@@ -1,5 +1,5 @@
 import React from "react";
-import { FaUsers } from "react-icons/fa";
+import { FaUsers, FaHistory } from "react-icons/fa";
 import {
   MdSupervisorAccount,
   MdOutlineSupervisorAccount,
@@ -117,39 +117,15 @@ export const studentsidenavbarData = [
 
 export const adminsidenavbarData = [
   {
-    title: "Students",
-    path: "/Adminstudentview",
+    title: "Managers",
+    path: "/admindashboard",
     icon: <HiUsers />,
     cName: "nav-text",
   },
   {
-    title: "Staff",
-    path: "/Adminstaffview",
-    icon: <HiUsers />,
-    cName: "nav-text",
-  },
-  {
-    title: "Submission Types",
-    path: "/subtypes",
-    icon: <GiFiles />,
-    cName: "nav-text",
-  },
-  {
-    title: "Groups",
-    path: "/viewgroups",
-    icon: <FaUsers />,
-    cName: "nav-text",
-  },
-  {
-    title: "Marking Schemes",
-    path: "/createmarking",
-    icon: <HiDocumentSearch />,
-    cName: "nav-text",
-  },
-  {
-    title: "Templates",
-    path: "/uploadtemp",
-    icon: <HiTemplate />,
+    title: "Former Managers",
+    path: "/formermanagers",
+    icon: <FaHistory />,
     cName: "nav-text",
   },
 ];
