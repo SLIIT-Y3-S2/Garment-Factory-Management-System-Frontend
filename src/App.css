@@ -86,3 +86,24 @@
 .drawer_icon:hover{
   color: #63C2C7;
 }
+
+.title{
+  color: #174C4F;
+  font-weight: bolder;
+  font-size: 220%;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+.form1{
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 5%;
+  border: 2px solid #333;
+  border-radius: 10px;
+}
+
+.carousel1 {
+  height:150px;
+  margin: auto;
+  width: 350px;
+}
