@@ -86,3 +86,13 @@
 .drawer_icon:hover{
   color: #63C2C7;
 }
+
+.btn{
+  background-color:#63C2C7;
+  color:white;
+}
+
+.btn:hover {
+  background-color: #174C4F;
+  color:white;
+}

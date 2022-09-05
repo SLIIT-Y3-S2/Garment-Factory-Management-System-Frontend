@@ -5,18 +5,16 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { adminsidenavbarData } from "../components/SideNavBarData.js";
+import { buyersidenavbarData } from "./SideNavBarData.js";
 import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -31,7 +29,7 @@ const Theme = createTheme({
   },
 });
 
-const EmpSideNavBar = (props) => {
+const BuyerSideNavBar = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -43,7 +41,7 @@ const EmpSideNavBar = (props) => {
     <div className="drawer">
       <img src="/LogoNoBg.png" alt="logo" width="80" height="80" />
       <List>
-        {adminsidenavbarData.map((data, index) => (
+        {buyersidenavbarData.map((data, index) => (
           <ListItem key={index} disablePadding>
             <Link to={data.path} className={data.cName}>
               <ListItemButton style={{ width: "235px", }}>
@@ -88,7 +86,7 @@ const EmpSideNavBar = (props) => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              Employee Manager
+              Buyers and Delivery Management
             </Typography>
           </Toolbar>
         </AppBar>
@@ -135,7 +133,7 @@ const EmpSideNavBar = (props) => {
   );
 };
 
-EmpSideNavBar.propTypes = {
+BuyerSideNavBar.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -143,4 +141,4 @@ EmpSideNavBar.propTypes = {
   window: PropTypes.func,
 };
 
-export default EmpSideNavBar;
+export default BuyerSideNavBar;
