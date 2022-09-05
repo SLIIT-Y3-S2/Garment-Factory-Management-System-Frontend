@@ -3,7 +3,7 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 
-const ManagerForm = ({ data }) => {
+const EmployeeForm = ({ data }) => {
   const [validated, setValidated] = useState(false);
   const [name, setName] = useState(data != null ? data.Name : null);
   const [email, setEmail] = useState(data != null ? data.Email : "");
@@ -11,10 +11,6 @@ const ManagerForm = ({ data }) => {
   const [address, setAddress] = useState(data != null ? data.Address : "");
   const [nic, setNIC] = useState(data != null ? data.NIC : "");
   const [position, setPosition] = useState(data != null ? data.Position : "");
-  const [password, setPassword] = useState(data != null ? data.Password : "");
-  const [confirmPassword, setConfirmPassword] = useState(
-    data != null ? data.ConfirmPassword : ""
-  );
 
   const reset = () => {
     setName("");
@@ -23,20 +19,16 @@ const ManagerForm = ({ data }) => {
     setAddress("");
     setNIC("");
     setPosition("");
-    setPassword("");
-    setConfirmPassword("");
   };
 
   const handleSubmit = (event) => {
-    const newManager = {
+    const newEmployee = {
       Name: name,
       Email: email,
       Mobile: mobile,
       Address: address,
       NIC: nic,
       Position: position,
-      Password: password,
-      ConfirmPassword: confirmPassword,
     };
 
     const form = event.currentTarget;
@@ -45,23 +37,19 @@ const ManagerForm = ({ data }) => {
       event.stopPropagation();
     } else {
       if (data == null) {
-        if (password === confirmPassword) {
-          axios
-            .post("http://localhost:5000/manager/addManager", newManager)
-            .then((data) => {
-              console.log(data);
-            })
-            .catch((err) => {
-              alert(err.message);
-            });
-        } else {
-          alert("Passwords do not match");
-        }
+        axios
+          .post("http://localhost:5000/employee/addEmployee", newEmployee)
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => {
+            alert(err.message);
+          });
       } else {
         axios
           .put(
-            `http://localhost:5000/manager/updateManager/${data._id}`,
-            newManager
+            `http://localhost:5000/employee/updateEmployee/${data._id}`,
+            newEmployee
           )
           .then((data) => {
             console.log(data);
@@ -73,6 +61,7 @@ const ManagerForm = ({ data }) => {
     }
     setValidated(true);
   };
+
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formName">
@@ -155,63 +144,25 @@ const ManagerForm = ({ data }) => {
           <option value="" disabled hidden>
             Select Position
           </option>
-          <option>Employee Manager</option>
-          <option>Supplier Manager</option>
-          <option>Delivery Manager</option>
-          <option>Stock Manager</option>
+          <option>Supervisor</option>
+          <option>Quality Checker</option>
+          <option>Operator</option>
+          <option>Helper</option>
+          <option>Cutter Man</option>
+          <option>Iron Man</option>
         </Form.Select>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formPassword">
-        {data == null ? (
-          <div>
-            <Form.Label>Create New Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Create Password"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <Form.Text className="text-muted">
-              Must contain at least one number and one uppercase and lowercase
-              letter, and at least 8 or more characters
-            </Form.Text>
-          </div>
-        ) : (
-          ""
-        )}
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formrePassword">
-        {data == null ? (
-          <div>
-            <Form.Label>Re Enter New Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Re Enter Password"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-          </div>
-        ) : (
-          ""
-        )}
-      </Form.Group>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <button className="btn" type="reset" onClick={() => reset()}>
           Reset
         </button>
         <button className="btn" type="submit">
-          {data != null ? "Save Changes" : "Add Manager"}
+          {data != null ? "Save Changes" : "Add Employee"}
         </button>
       </div>
     </Form>
   );
 };
 
-export default ManagerForm;
+export default EmployeeForm;

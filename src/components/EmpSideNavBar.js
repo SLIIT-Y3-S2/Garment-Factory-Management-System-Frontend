@@ -14,7 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { adminsidenavbarData } from "../components/SideNavBarData.js";
+import { HRMsidenavbarData } from "../components/SideNavBarData.js";
 import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -39,15 +39,17 @@ const EmpSideNavBar = (props) => {
 
   const drawer = (
     <div className="drawer">
-      <img src="/LogoNoBg.png" alt="logo" width="80" height="80" />
+      <Link to="/">
+        <img src="/LogoNoBg.png" alt="logo" width="80" height="80" />
+      </Link>
       <List>
-        {adminsidenavbarData.map((data, index) => (
+        {HRMsidenavbarData.map((data, index) => (
           <ListItem key={index} disablePadding>
             <Link to={data.path} className={data.cName}>
-              <ListItemButton style={{ width: "235px", }}>
+              <ListItemButton style={{ width: "235px" }}>
                 <ListItemIcon
                   className="drawer_icon"
-                  style={{ color:"white" ,}}
+                  style={{ color: "white" }}
                 >
                   {data.icon}
                 </ListItemIcon>
@@ -69,7 +71,7 @@ const EmpSideNavBar = (props) => {
         <CssBaseline />
         <AppBar
           position="fixed"
-          style={{border:"none"}}
+          style={{ border: "none" }}
           sx={{
             width: { sm: `calc(100% - ${drawerWidth}px)` },
             ml: { sm: `${drawerWidth}px` },

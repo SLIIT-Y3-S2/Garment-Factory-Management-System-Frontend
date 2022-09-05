@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 import Modal from "react-bootstrap/Modal";
 import { ModalBody } from "react-bootstrap";
-import EmployeeDeleteForm from './EmployeeDeleteForm';
+import EmployeeDeleteForm from "./EmployeeDeleteForm";
 
 const EmployeeModalDelete = (props) => {
   return (
@@ -12,15 +12,17 @@ const EmployeeModalDelete = (props) => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title>
-          Delete Employee
-        </Modal.Title>
+        <Modal.Title>Delete Employee</Modal.Title>
       </Modal.Header>
       <ModalBody>
-        <EmployeeDeleteForm employee={props.managerdatadelete} />
+        {props.managerdatadelete != null ? (
+          <EmployeeDeleteForm manager={props.managerdatadelete} />
+        ) : (
+          <EmployeeDeleteForm employee={props.employeedatadelete} />
+        )}
       </ModalBody>
     </Modal>
-  )
-}
+  );
+};
 
 export default EmployeeModalDelete;

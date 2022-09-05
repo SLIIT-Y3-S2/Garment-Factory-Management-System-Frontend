@@ -8,11 +8,11 @@ import ManagerModal from "./ManagerModal";
 import EmployeeModalDelete from "./EmployeeModalDelete";
 
 const AdminDashboard = () => {
-    const [managers, setManagers] = useState([]);
-    const [modalShow, setModalShow] = useState(false);
-    const [managerdata, setManagerData] = useState(null);
-    const [modalShowDelete, setModalShowDelete] = useState(false);
-    const [managerdatadelete, setManagerDataDelete] = useState(null);
+  const [managers, setManagers] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
+  const [managerdata, setManagerData] = useState(null);
+  const [modalShowDelete, setModalShowDelete] = useState(false);
+  const [managerdatadelete, setManagerDataDelete] = useState(null);
 
   useEffect(() => {
     const getManagers = () => {
@@ -31,7 +31,17 @@ const AdminDashboard = () => {
     <>
       <AdminSideNavBar />
       <div className="pageBody">
-              <button className="btn" style={{ marginLeft: "80%" }} onClick={() => { setModalShow(true); setManagerData(null) }} >
+        <h2>
+          <i>Managers</i>
+        </h2>
+        <button
+          className="btn"
+          style={{ marginLeft: "80%" }}
+          onClick={() => {
+            setModalShow(true);
+            setManagerData(null);
+          }}
+        >
           <FaUserPlus />
           &nbsp;&nbsp;Add Manager
         </button>
@@ -72,10 +82,10 @@ const AdminDashboard = () => {
                     &nbsp;&nbsp;&nbsp;
                     <span>
                       <FaTrash
-                          onClick={() => {
-                            setModalShowDelete(true);
-                            setManagerDataDelete(manager);
-                          }}
+                        onClick={() => {
+                          setModalShowDelete(true);
+                          setManagerDataDelete(manager);
+                        }}
                         style={{ cursor: "pointer", color: "red" }}
                         title="Delete Manager"
                       />
@@ -90,12 +100,12 @@ const AdminDashboard = () => {
           show={modalShow}
           onHide={() => setModalShow(false)}
           managerdata={managerdata}
-              />
-              <EmployeeModalDelete
-                  show={modalShowDelete}
-                  onHide={() => setModalShowDelete(false)}
-                  managerdatadelete={managerdatadelete}
-                />
+        />
+        <EmployeeModalDelete
+          show={modalShowDelete}
+          onHide={() => setModalShowDelete(false)}
+          managerdatadelete={managerdatadelete}
+        />
       </div>
     </>
   );

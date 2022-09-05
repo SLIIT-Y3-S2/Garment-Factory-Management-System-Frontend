@@ -2,28 +2,28 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Table } from "react-bootstrap";
-import AdminSideNavBar from "./AdminSideNavBar";
+import EmpSideNavBar from "./EmpSideNavBar";
 
-const FormerManagers = () => {
-  const [formerManagers, setFormerManagers] = useState([]);
+const FormerEmployees = () => {
+  const [formerEmployees, setFormerEmployees] = useState([]);
 
   useEffect(() => {
-    const getFormerManagers = () => {
+    const getFormerEmployees = () => {
       axios
         .get("http://localhost:5000/formeremployee/")
         .then((res) => {
-          setFormerManagers(res.data);
+          setFormerEmployees(res.data);
         })
         .catch((err) => {
           alert(err.message);
         });
     };
-    getFormerManagers();
+    getFormerEmployees();
   }, []);
 
   return (
     <>
-      <AdminSideNavBar />
+      <EmpSideNavBar />
       <div className="pageBody">
         <h2>
           <i>Former Managers</i>
@@ -40,23 +40,23 @@ const FormerManagers = () => {
               <th>Position</th>
             </tr>
           </thead>
-          {formerManagers
+          {formerEmployees
             .filter(
               (Position) =>
-                Position.Position === "Employee Manager" ||
-                Position.Position === "Supplier Manager" ||
-                Position.Position === "Delivery Manager" ||
-                Position.Position === "Stock Manager"
+                Position.Position !== "Employee Manager" &&
+                Position.Position !== "Supplier Manager" &&
+                Position.Position !== "Delivery Manager" &&
+                Position.Position !== "Stock Manager"
             )
-            .map((formermanager) => (
-              <tbody key={formermanager._id}>
+            .map((formerEmployee) => (
+              <tbody key={formerEmployee._id}>
                 <tr>
-                  <td>{formermanager.Name}</td>
-                  <td>{formermanager.Email}</td>
-                  <td>{formermanager.Mobile}</td>
-                  <td>{formermanager.Address}</td>
-                  <td>{formermanager.NIC}</td>
-                  <td>{formermanager.Position}</td>
+                  <td>{formerEmployee.Name}</td>
+                  <td>{formerEmployee.Email}</td>
+                  <td>{formerEmployee.Mobile}</td>
+                  <td>{formerEmployee.Address}</td>
+                  <td>{formerEmployee.NIC}</td>
+                  <td>{formerEmployee.Position}</td>
                 </tr>
               </tbody>
             ))}
@@ -66,4 +66,4 @@ const FormerManagers = () => {
   );
 };
 
-export default FormerManagers;
+export default FormerEmployees;
