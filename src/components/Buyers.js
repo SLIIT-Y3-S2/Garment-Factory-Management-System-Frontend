@@ -78,7 +78,7 @@ const Buyers = () => {
                   </button>
                 </td>
                 <td>
-                  <button className='btn'
+                  <button className='btn-del'
                     onClick={() => {
                       setModalShowDel(true);
                       setBuyerdelete(buyer);

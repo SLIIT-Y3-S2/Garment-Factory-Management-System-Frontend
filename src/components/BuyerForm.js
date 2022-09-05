@@ -64,13 +64,22 @@ const BuyerForm = ({ det }) => {
         >
             <Form.Group className="mb-3" controlId="formID">
             <Form.Label>Buyer ID</Form.Label>
+            {det == null ? (
             <Form.Control
                 type="text"
                 placeholder="Enter ID"
                 value={bid}
                 onChange={(e) => setBuyerID(e.target.value)}
                 required
-            />
+
+            />) : (<Form.Control
+                type="text"
+                placeholder="Enter ID"
+                value={bid}
+                onChange={(e) => setBuyerID(e.target.value)}
+                required
+                disabled
+            /> )}
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formName">

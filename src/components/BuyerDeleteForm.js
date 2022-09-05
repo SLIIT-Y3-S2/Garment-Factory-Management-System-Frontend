@@ -51,7 +51,7 @@ const BuyerDeleteForm = ({ buyer }) => {
             </Form.Label>
             </Form.Group>
 
-            <button className='btn' type="submit">
+            <button className='btn-del' type="submit">
                 Delete
             </button>
         </Form>
