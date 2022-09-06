@@ -18,8 +18,6 @@ import Typography from "@mui/material/Typography";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { stockInsidenavbarData } from "./SideNavBarData.js";
 import { Link } from "react-router-dom";
-import Header from "./Header.js";
-import Footer from "./Footer.js";
 
 const drawerWidth = 240;
 const Theme = createTheme({
@@ -43,7 +41,9 @@ const StocksInSideNavBar = (props) => {
 
   const drawer = (
     <div className="drawer">
+      <Link to = '/'>
       <img src="/LogoNoBg.png" alt="logo" width="80" height="80" />
+      </Link>
       <List>
         {stockInsidenavbarData.map((data, index) => (
           <ListItem key={index} disablePadding>

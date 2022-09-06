@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import StocksInSideNavBar from "./StocksInSideNavBar";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
@@ -21,6 +21,8 @@ const AddStock = ({ upd }) => {
   const [date, setDate] = useState(upd != null ? upd.date : "");
   const [Time, setTime] = useState(upd != null ? upd.Time : "");
 
+  const [TotalStock, setTotalStock] = useState([]);
+
   const disablePastDays = () => {
     const today = new Date();
     // const dd = String(today.getDate());
@@ -28,6 +30,21 @@ const AddStock = ({ upd }) => {
     // const yyyy = today.getFullYear();
     return today;
   };
+
+  useEffect(() => {
+    const getTotalStock = () => {
+      axios
+        .get("http://localhost:5000/totalstock/6315fef3997af5bc72182029")
+        .then((res) => {
+          setTotalStock(res.data);
+          console.log(res.data);
+        })
+        .catch((err) => {
+          alert(err.msg);
+        });
+    };
+    getTotalStock();
+  }, []);
 
   const onSubmit = (event) => {
     const newStockInType = {
@@ -44,7 +61,7 @@ const AddStock = ({ upd }) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
-      event.stopPropagation();
+      // event.stopPropagation();
     } else {
       if (upd == null) {
         axios
@@ -54,8 +71,14 @@ const AddStock = ({ upd }) => {
         console.log(newStockInType);
 
         if(newStockInType.GarmentType === 'Blouse'){
+          console.log(TotalStock.Quantity);
+          const totalStock = parseInt(TotalStock.Quantity) + parseInt(newStockInType.Quantity);
+          console.log(totalStock);
+          const newTotalStock = {
+            Quantity: totalStock,
+          }
           axios
-          .put("http://localhost:5000/totalstock/6315fef3997af5bc72182029", newStockInType)
+          .put("http://localhost:5000/totalstock/6315fef3997af5bc72182029", newTotalStock)
           .then(() => alert("stock updated"))
           .catch((err) => alert(err));
           console.log(newStockInType.Quantity);

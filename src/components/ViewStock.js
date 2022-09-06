@@ -29,7 +29,21 @@ const ViewStock = () => {
           alert(err.msg);
         });
     }
+
+    const getStocksCount = () => {
+      axios
+        .get("http://localhost:5000/totalstock/6315fef3997af5bc72182029")
+        .then((res) => {
+          setStocksCount(res.data);
+          console.log(res.data);
+        })
+        .catch((err) => {
+          alert(err.msg);
+        });
+    };
+
     getStocksView();
+    getStocksCount();
   }, []);
 
   //   const deleteClick = ({id}) => {
@@ -48,6 +62,7 @@ const ViewStock = () => {
     <div>
       <StocksInSideNavBar />
       <div className="pageBody">
+      {[StocksCount].map((StockCount) => (
         <Carousel variant="dark" slide={false}>
           <Carousel.Item>
           
@@ -55,7 +70,7 @@ const ViewStock = () => {
               <Card.Img variant="top" src="/images/TG.jpg" className="carousel1" />
               <Card.Body>
               {/* {StocksCount.map((StockCount) => ( */}
-              <Card.Footer className="text-muted"></Card.Footer>
+              <Card.Footer className="text-muted">{StockCount.Quantity}</Card.Footer>
               {/* ))} */}
               </Card.Body>
             </Card>
@@ -118,7 +133,7 @@ const ViewStock = () => {
             </Card>
           </Carousel.Item>
         </Carousel>
-      
+      ))}      
         <br />
         <br />
         <br />
