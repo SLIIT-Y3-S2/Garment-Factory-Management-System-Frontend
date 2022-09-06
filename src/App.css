@@ -104,3 +104,23 @@
   padding: 6px;
   width: 100px;
 }
+
+.btn{
+  background-color:#63C2C7;
+  color:white;
+}
+
+.btn:hover {
+  background-color: #174C4F;
+  color:white;
+}
+
+.btn-del {
+  background-color: rgb(245, 41, 41);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 6px;
+  width: 100px;
+
+}
