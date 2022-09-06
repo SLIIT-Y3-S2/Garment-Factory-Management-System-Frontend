@@ -1,9 +1,9 @@
 import React from "react";
-import { FaUsers } from "react-icons/fa";
+import { FaHistory } from "react-icons/fa";
 import {
   MdSupervisorAccount,
   MdOutlineSupervisorAccount,
-  MdTopic,
+  MdPendingActions,
   MdOutlineTopic,
 } from "react-icons/md";
 import { AiOutlineWechat, AiFillFileAdd } from "react-icons/ai";
@@ -15,6 +15,7 @@ import {
   HiDocumentSearch,
 } from "react-icons/hi";
 import { GiFiles } from "react-icons/gi";
+import { TbTruckDelivery } from "react-icons/tb"
 
 export const supliersidenavbarData = [
   {
