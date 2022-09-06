@@ -41,7 +41,9 @@ const SupSideNavBar = (props) => {
 
   const drawer = (
     <div className="drawer">
+      <Link to="/">
       <img src="/LogoNoBg.png" alt="logo" width="80" height="80" />
+      </Link>
       <List>
         {supliersidenavbarData.map((data, index) => (
           <ListItem key={index} disablePadding>

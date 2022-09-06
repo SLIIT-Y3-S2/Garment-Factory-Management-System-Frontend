@@ -65,7 +65,7 @@ const SuppliersTable = () => {
                       style={{ cursor: "pointer" }}
                       title="Edit Supplier">Update</button>
                   &nbsp;&nbsp;&nbsp;
-                  <button type="button" className='btn' onClick={() => {
+                  <button type="button" className='btn-del' onClick={() => {
                             setModalDelete(true);
                             setSupplierDelete(supplier);
                           }}
