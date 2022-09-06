@@ -17,6 +17,28 @@ import {
 import { GiFiles } from "react-icons/gi";
 import { TbTruckDelivery } from "react-icons/tb"
 
+export const supliersidenavbarData = [
+  {
+    title: "Suppliers",
+    path: "/supplier",
+    icon: <HiUsers />,
+    cName: "nav-text",
+  },
+  {
+    title: "Former Suppliers",
+    path: "/formersupplier",
+    icon: <HiUsers />,
+    cName: "nav-text",
+  },
+  {
+    title: "Supply",
+    path: "/supply",
+    icon: <GiFiles />,
+    cName: "nav-text",
+  },
+  
+];
+
 export const buyersidenavbarData = [
   {
     title: "Buyers",

@@ -86,18 +86,9 @@
   color: #63c2c7;
 }
 
-.btn {
-  background-color: #63c2c7;
-  color: black;
-}
 
-.btn:hover {
-  background-color: #174c4f;
-  color: white;
-}
 
-.btn-del{
-  background-color: rgb(245, 41, 41);
+.drawer_icon{
   color: white;
   border: none;
   border-radius: 5px;
@@ -110,17 +101,36 @@
   color:white;
 }
 
-.btn:hover {
-  background-color: #174C4F;
+.btn{
+
+  background-color:#63C2C7;
+
   color:white;
+
 }
 
-.btn-del {
+
+
+.btn:hover {
+
+  background-color: #174C4F;
+
+  color:white;
+
+}
+
+.btn-del{
+
   background-color: rgb(245, 41, 41);
+
   color: white;
+
   border: none;
+
   border-radius: 5px;
+
   padding: 6px;
+
   width: 100px;
 
 }

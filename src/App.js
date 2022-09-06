@@ -2,11 +2,17 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
+
+import SuppliersTable from "./components/SuppliersTable";
+import Supplier from "./components/Suppliers";
 import Buyers from "./components/Buyers";
 import FormerBuyers from "./components/FormerBuyers";
 import AdminDashboard from "./components/AdminDashboard";
 import FormerManagers from "./components/FormerManagers";
 import FormerEmployees from "./components/FormerEmployees";
+import SupplierForm from "./components/SupplierForm";
+import FormerSuppliersTable from "./components/FormerSuppliers";
+import SupplyTable from "./components/Supply";
 import Employee from "./components/Employee";
 
 function App() {
@@ -19,8 +25,12 @@ function App() {
           <Route path="/formermanagers" element={<FormerManagers/>}/>
           <Route path="/buyer" element={<Buyers />} />
           <Route path="/formerbuyer" element={<FormerBuyers />} />
-          <Route path="/employee" element={<Employee />} />
+          <Route path="/supplier" element={<Supplier/>} />
+          <Route path="/formersupplier" element={<FormerSuppliersTable/>} />
+          <Route path="/supply" element={<SupplyTable/>} />
+          <Route path="/employee" element={<Employee/>}/>
           <Route path="/formeremployees" element={<FormerEmployees/>}/>
+          
         </Routes>
       </BrowserRouter>
     </div>
