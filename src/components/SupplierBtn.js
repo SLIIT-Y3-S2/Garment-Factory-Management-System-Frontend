@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button'
 import { FaUserPlus } from 'react-icons/fa';
 
 const SupplierBtn = ({ onclick }) => {

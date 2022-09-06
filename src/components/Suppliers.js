@@ -4,7 +4,6 @@ import { useState } from 'react';
 import ModleSupplier from './ModleSupplier';
 import SuppliersTable from './SuppliersTable';
 import SideNavBar from './SupSideNavBar';
-import FormerSuppliersTable from './FormerSuppliers';
 
 
 const Supplier = () => {
