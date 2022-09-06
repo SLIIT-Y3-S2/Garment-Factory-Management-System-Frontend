@@ -17,6 +17,7 @@ import AddStock from "./components/AddStock";
 import ViewStock from "./components/ViewStock";
 import EditStockModal from "./components/EditStockModal";
 import AppDeleteModal from "./components/AppDeleteModal";
+import Employee from "./components/Employee";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/viewStocks" element={<ViewStock />} />
           <Route path="/editStocks" element={<EditStockModal />} />
           <Route path="/deleteStocks" element={<AppDeleteModal/>}/>
+          <Route path="/employee" element={<Employee/>}/>
           <Route path="/formeremployees" element={<FormerEmployees/>}/>
           
         </Routes>
