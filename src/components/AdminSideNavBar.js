@@ -14,7 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { buyersidenavbarData } from "./SideNavBarData.js";
+import { adminsidenavbarData } from "../components/SideNavBarData.js";
 import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -29,7 +29,7 @@ const Theme = createTheme({
   },
 });
 
-const BuyerSideNavBar = (props) => {
+const AdminSideNavBar = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -43,7 +43,7 @@ const BuyerSideNavBar = (props) => {
         <img src="/LogoNoBg.png" alt="logo" width="80" height="80" />
       </Link>
       <List>
-        {buyersidenavbarData.map((data, index) => (
+        {adminsidenavbarData.map((data, index) => (
           <ListItem key={index} disablePadding>
             <Link to={data.path} className={data.cName}>
               <ListItemButton style={{ width: "235px" }}>
@@ -88,7 +88,7 @@ const BuyerSideNavBar = (props) => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              Buyers and Delivery Management
+              Admin Dashboard
             </Typography>
           </Toolbar>
         </AppBar>
@@ -135,7 +135,7 @@ const BuyerSideNavBar = (props) => {
   );
 };
 
-BuyerSideNavBar.propTypes = {
+AdminSideNavBar.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -143,4 +143,4 @@ BuyerSideNavBar.propTypes = {
   window: PropTypes.func,
 };
 
-export default BuyerSideNavBar;
+export default AdminSideNavBar;
