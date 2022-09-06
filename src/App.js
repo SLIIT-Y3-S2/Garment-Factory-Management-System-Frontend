@@ -13,6 +13,7 @@ import FormerEmployees from "./components/FormerEmployees";
 import SupplierForm from "./components/SupplierForm";
 import FormerSuppliersTable from "./components/FormerSuppliers";
 import SupplyTable from "./components/Supply";
+import Employee from "./components/Employee";
 
 function App() {
   return (
@@ -27,7 +28,9 @@ function App() {
           <Route path="/supplier" element={<Supplier/>} />
           <Route path="/formersupplier" element={<FormerSuppliersTable/>} />
           <Route path="/supply" element={<SupplyTable/>} />
+          <Route path="/employee" element={<Employee/>}/>
           <Route path="/formeremployees" element={<FormerEmployees/>}/>
+          
         </Routes>
       </BrowserRouter>
     </div>

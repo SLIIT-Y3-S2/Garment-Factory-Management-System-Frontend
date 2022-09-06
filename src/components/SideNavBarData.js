@@ -38,3 +38,61 @@ export const supliersidenavbarData = [
   },
   
 ];
+
+export const buyersidenavbarData = [
+  {
+    title: "Buyers",
+    path: "/buyer",
+    icon: <MdSupervisorAccount />,
+    cName: "nav-text",
+  },
+  {
+    title: "Former Buyers",
+    path: "/formerbuyer",
+    icon: <MdOutlineSupervisorAccount />,
+    cName: "nav-text",
+  },
+  {
+    title: "Pending Deliveries",
+    path: "#",
+    icon: <MdPendingActions />,
+    cName: "nav-text",
+  },
+  {
+    title: "Approved Deliveries",
+    path: "#",
+    icon: <TbTruckDelivery />,
+    cName: "nav-text",
+  },
+  
+];
+
+export const adminsidenavbarData = [
+  {
+    title: "Managers",
+    path: "/admindashboard",
+    icon: <HiUsers />,
+    cName: "nav-text",
+  },
+  {
+    title: "Former Managers",
+    path: "/formermanagers",
+    icon: <FaHistory />,
+    cName: "nav-text",
+  },
+];
+
+export const HRMsidenavbarData = [
+  {
+    title: "Employees",
+    path: "/employee",
+    icon: <HiUsers />,
+    cName: "nav-text",
+  },
+  {
+    title: "Former Employees",
+    path: "/formeremployees",
+    icon: <FaHistory />,
+    cName: "nav-text",
+  },
+];
