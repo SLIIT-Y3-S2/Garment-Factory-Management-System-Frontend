@@ -38,30 +38,29 @@
 }
 
 .footer {
-    background-color: #333;
-    padding: 40px;
-  }
+  background-color: #333;
+  padding: 40px;
+}
 
-.footer_icons{
+.footer_icons {
   color: grey;
   cursor: pointer;
 }
 
-.footer_icons:hover{
-  color: #63C2C7
-;
+.footer_icons:hover {
+  color: #63c2c7;
 }
 
-.drawer{
+.drawer {
   height: 100%;
-  background-color: #174C4F;
+  background-color: #174c4f;
   color: white;
 }
 
-.pageBody{
-  margin-left: 18%;
+.pageBody {
+  margin-left: 250px;
   margin-top: 6%;
-  margin-right: 3%;
+  margin-right: 1%;
 }
 
 .nav-text {
@@ -71,18 +70,37 @@
   font-size: 25px;
 }
 
-.nav-text:hover{
-  color: #63C2C7;
+.nav-text:hover {
+  color: #63c2c7;
 }
 
-.nav-text:active{
-  color: #63C2C7;
+.nav-text:active {
+  color: #63c2c7;
 }
 
-.drawer_icon{
+.drawer_icon {
   color: white;
 }
 
-.drawer_icon:hover{
-  color: #63C2C7;
+.drawer_icon:hover {
+  color: #63c2c7;
+}
+
+.btn {
+  background-color: #63c2c7;
+  color: black;
+}
+
+.btn:hover {
+  background-color: #174c4f;
+  color: white;
+}
+
+.btn-del{
+  background-color: rgb(245, 41, 41);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 6px;
+  width: 100px;
 }

@@ -1,52 +1,52 @@
 import React from "react";
-import EmpSideNavBar from "./EmpSideNavBar";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Table } from "react-bootstrap";
-import { FaRegTrashAlt, FaEdit, FaUserPlus } from "react-icons/fa";
+import { FaEdit, FaRegTrashAlt, FaUserPlus } from "react-icons/fa";
+import AdminSideNavBar from "./AdminSideNavBar";
+import ManagerModal from "./ManagerModal";
 import EmployeeModalDelete from "./EmployeeModalDelete";
-import EmployeeModal from "./EmployeeModal";
 
-const Employee = () => {
-  const [employees, setEmployees] = useState([]);
+const AdminDashboard = () => {
+  const [managers, setManagers] = useState([]);
   const [modalShow, setModalShow] = useState(false);
-  const [employeedata, setEmployeeData] = useState(null);
+  const [managerdata, setManagerData] = useState(null);
   const [modalShowDelete, setModalShowDelete] = useState(false);
-  const [employeedatadelete, setEmployeeDataDelete] = useState(null);
+  const [managerdatadelete, setManagerDataDelete] = useState(null);
 
   useEffect(() => {
-    const getEmployees = () => {
+    const getManagers = () => {
       axios
-        .get("http://localhost:5000/employee")
+        .get("http://localhost:5000/manager")
         .then((res) => {
-          setEmployees(res.data);
+          setManagers(res.data);
         })
         .catch((err) => {
           alert(err.message);
         });
     };
-    getEmployees();
+    getManagers();
   }, []);
-
   return (
     <>
-      <EmpSideNavBar />
+      <AdminSideNavBar />
       <div className="pageBody">
         <h2>
-          <i>Employees</i>
+          <i>Managers</i>
         </h2>
         <button
           className="btn"
           style={{ marginLeft: "80%" }}
           onClick={() => {
             setModalShow(true);
-            setEmployeeData(null);
+            setManagerData(null);
           }}
         >
           <FaUserPlus />
-          &nbsp;&nbsp;Add Employee
+          &nbsp;&nbsp;Add Manager
         </button>
-        <br/><br/>
+        <br />
+        <br />
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -59,25 +59,25 @@ const Employee = () => {
               <th>Actions</th>
             </tr>
           </thead>
-          {employees.map((employee) => (
-            <tbody key={employee._id}>
+          {managers.map((manager) => (
+            <tbody key={manager._id}>
               <tr>
-                <td>{employee.Name}</td>
-                <td>{employee.Email}</td>
-                <td>{employee.Mobile}</td>
-                <td>{employee.Address}</td>
-                <td>{employee.NIC}</td>
-                <td>{employee.Position}</td>
+                <td>{manager.Name}</td>
+                <td>{manager.Email}</td>
+                <td>{manager.Mobile}</td>
+                <td>{manager.Address}</td>
+                <td>{manager.NIC}</td>
+                <td>{manager.Position}</td>
                 <td>
                   <div>
                     <span>
                       <FaEdit
                         onClick={() => {
                           setModalShow(true);
-                          setEmployeeData(employee);
+                          setManagerData(manager);
                         }}
-                        style={{ cursor: "pointer", color:"orange" }}
-                        title="Edit Employee"
+                        style={{ cursor: "pointer", color: "orange" }}
+                        title="Edit Manager"
                       />
                     </span>
                     &nbsp;&nbsp;&nbsp;
@@ -85,10 +85,10 @@ const Employee = () => {
                       <FaRegTrashAlt
                         onClick={() => {
                           setModalShowDelete(true);
-                          setEmployeeDataDelete(employee);
+                          setManagerDataDelete(manager);
                         }}
                         style={{ cursor: "pointer", color: "red" }}
-                        title="Delete Employee"
+                        title="Delete Manager"
                       />
                     </span>
                   </div>
@@ -97,19 +97,19 @@ const Employee = () => {
             </tbody>
           ))}
         </Table>
-        <EmployeeModal
+        <ManagerModal
           show={modalShow}
           onHide={() => setModalShow(false)}
-          employeedata={employeedata}
+          managerdata={managerdata}
         />
         <EmployeeModalDelete
           show={modalShowDelete}
           onHide={() => setModalShowDelete(false)}
-          employeedatadelete={employeedatadelete}
+          managerdatadelete={managerdatadelete}
         />
       </div>
     </>
   );
 };
 
-export default Employee;
+export default AdminDashboard;
