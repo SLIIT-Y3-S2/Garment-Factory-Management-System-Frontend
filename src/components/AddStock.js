@@ -52,6 +52,16 @@ const AddStock = ({ upd }) => {
           .then(() => alert("You add a stock"))
           .catch((err) => alert(err));
         console.log(newStockInType);
+
+        if(newStockInType.GarmentType === 'Blouse'){
+          axios
+          .put("http://localhost:5000/totalstock/6315fef3997af5bc72182029", newStockInType)
+          .then(() => alert("stock updated"))
+          .catch((err) => alert(err));
+          console.log(newStockInType.Quantity);
+
+        }
+        
       } else {
         axios
           .put(`http://localhost:5000/stockin/${upd._id}`, newStockInType)
@@ -77,8 +87,8 @@ const AddStock = ({ upd }) => {
     <>
       <StocksInSideNavBar />
       <div className="pageBody">
-        <div className="title">Add a stock</div>
-        <div className="form1">
+        <div className="title">{upd != null ? "Edit Stock" : "Add Stock"}</div>
+        <div className={upd == null ? "form1" : ""}>
           <br />
           <Form noValidate validated={validated} onSubmit={onSubmit}>
             <Form.Group className="mb-3">
@@ -208,7 +218,7 @@ const AddStock = ({ upd }) => {
             <Form.Group className="mb-3">
               <Form.Check
                 required
-                label="Agree to terms and conditions"
+                label={upd == null ? "I have released the stock" : "I edited the released stock"}
                 feedback="You must agree before submitting."
                 feedbackType="invalid"
               />

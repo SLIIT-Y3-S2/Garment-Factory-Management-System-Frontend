@@ -7,14 +7,15 @@ import StocksInSideNavBar from "./StocksInSideNavBar";
 import AppDeleteModal from "./AppDeleteModal";
 import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
+import EditStockModal from "./EditStockModal";
 
 const ViewStock = () => {
   const [StocksView, setStocksView] = useState([]);
-  //const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = React.useState(false);
   const [modaldelete, setModalDelete] = useState(false);
   const [StocksDelete, setStocksDelete] = useState();
-  // const [Stockdet, setStockdet] = useState();
-  // const [StocksCount, setStocksCount] = useState([]);
+  const [Stockdet, setStockdet] = useState();
+  const [StocksCount, setStocksCount] = useState([]);
 
   useEffect(() => {
     const getStocksView = () => {
@@ -51,7 +52,7 @@ const ViewStock = () => {
           <Carousel.Item>
           
             <Card>
-              <Card.Img variant="top" src="/images/DM.jpg" className="carousel1" />
+              <Card.Img variant="top" src="/images/TG.jpg" className="carousel1" />
               <Card.Body>
               {/* {StocksCount.map((StockCount) => ( */}
               <Card.Footer className="text-muted"></Card.Footer>
@@ -62,7 +63,7 @@ const ViewStock = () => {
           </Carousel.Item>
           <Carousel.Item>
           <Card>
-              <Card.Img variant="top" src="/images/EM.jpg" className="carousel1" />
+              <Card.Img variant="top" src="/images/TL.jpg" className="carousel1" />
               <Card.Body>
               <Card.Footer className="text-muted">2 days ago</Card.Footer>
               </Card.Body>
@@ -70,7 +71,7 @@ const ViewStock = () => {
           </Carousel.Item>
           <Carousel.Item>
           <Card>
-              <Card.Img variant="top" src="/images/DM.jpg" className="carousel1" />
+              <Card.Img variant="top" src="/images/SG.jpg" className="carousel1" />
               <Card.Body>
               <Card.Footer className="text-muted">3 days ago</Card.Footer>
               </Card.Body>
@@ -78,7 +79,39 @@ const ViewStock = () => {
           </Carousel.Item>
           <Carousel.Item>
           <Card>
-              <Card.Img variant="top" src="/images/EM.jpg" className="carousel1" />
+              <Card.Img variant="top" src="/images/SL.jpg" className="carousel1" />
+              <Card.Body>
+              <Card.Footer className="text-muted">4 days ago</Card.Footer>
+              </Card.Body>
+            </Card>
+          </Carousel.Item>
+          <Carousel.Item>
+          <Card>
+              <Card.Img variant="top" src="/images/TSG.jpg" className="carousel1" />
+              <Card.Body>
+              <Card.Footer className="text-muted">4 days ago</Card.Footer>
+              </Card.Body>
+            </Card>
+          </Carousel.Item>
+          <Carousel.Item>
+          <Card>
+              <Card.Img variant="top" src="/images/TSL.jpeg" className="carousel1" />
+              <Card.Body>
+              <Card.Footer className="text-muted">4 days ago</Card.Footer>
+              </Card.Body>
+            </Card>
+          </Carousel.Item>
+          <Carousel.Item>
+          <Card>
+              <Card.Img variant="top" src="/images/SK.png" className="carousel1" />
+              <Card.Body>
+              <Card.Footer className="text-muted">4 days ago</Card.Footer>
+              </Card.Body>
+            </Card>
+          </Carousel.Item>
+          <Carousel.Item>
+          <Card>
+              <Card.Img variant="top" src="/images/BL.jpg" className="carousel1" />
               <Card.Body>
               <Card.Footer className="text-muted">4 days ago</Card.Footer>
               </Card.Body>
@@ -124,6 +157,10 @@ const ViewStock = () => {
                     &nbsp;&nbsp;&nbsp;
                     <span>
                       <FaEdit
+                      onClick={() => {
+                        setModalShow(true);
+                        setStockdet(StockView)
+                      }}
                         style={{ cursor: "pointer", color: "ORANGE" }}
                         title="Edit Record"
                       />
@@ -150,6 +187,13 @@ const ViewStock = () => {
             </tbody>
           ))}
         </Table>
+
+        <EditStockModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        Stockdet={Stockdet}
+        />
+
         <AppDeleteModal
           show={modaldelete}
           onHide={() => setModalDelete(false)}
