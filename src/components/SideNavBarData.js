@@ -1,5 +1,5 @@
 import React from "react";
-import { FaUsers, FaTable } from "react-icons/fa";
+import { FaHistory, FaTable } from "react-icons/fa";
 import {
   MdSupervisorAccount,
   MdOutlineAddToHomeScreen,
@@ -15,6 +15,7 @@ import {
   HiDocumentSearch,
 } from "react-icons/hi";
 import { GiFiles } from "react-icons/gi";
+import { TbTruckDelivery } from "react-icons/tb"
 
 export const stockInsidenavbarData = [
   {
@@ -35,6 +36,9 @@ export const stockInsidenavbarData = [
     icon: <BiLogOut />,
     cName: "nav-text",
   },
+];
+
+export const HRMsidenavbarData = [
   {
     title: "Pending Packages",
     path: "/viewgroups",

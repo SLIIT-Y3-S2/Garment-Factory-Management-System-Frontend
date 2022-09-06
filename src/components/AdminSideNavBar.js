@@ -14,7 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { stockInsidenavbarData } from "./SideNavBarData.js";
+import { adminsidenavbarData } from "../components/SideNavBarData.js";
 import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -29,7 +29,7 @@ const Theme = createTheme({
   },
 });
 
-const StocksInSideNavBar = (props) => {
+const AdminSideNavBar = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -39,11 +39,11 @@ const StocksInSideNavBar = (props) => {
 
   const drawer = (
     <div className="drawer">
-      <Link to = '/'>
-      <img src="/LogoNoBg.png" alt="logo" width="80" height="80" />
+      <Link to="/">
+        <img src="/LogoNoBg.png" alt="logo" width="80" height="80" />
       </Link>
       <List>
-        {stockInsidenavbarData.map((data, index) => (
+        {adminsidenavbarData.map((data, index) => (
           <ListItem key={index} disablePadding>
             <Link to={data.path} className={data.cName}>
               <ListItemButton style={{ width: "235px" }}>
@@ -77,7 +77,6 @@ const StocksInSideNavBar = (props) => {
             ml: { sm: `${drawerWidth}px` },
           }}
         >
-          {/* <Header/> */}
           <Toolbar>
             <IconButton
               color="inherit"
@@ -89,7 +88,7 @@ const StocksInSideNavBar = (props) => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              Stocks In
+              Admin Dashboard
             </Typography>
           </Toolbar>
         </AppBar>
@@ -136,7 +135,7 @@ const StocksInSideNavBar = (props) => {
   );
 };
 
-StocksInSideNavBar.propTypes = {
+AdminSideNavBar.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -144,4 +143,4 @@ StocksInSideNavBar.propTypes = {
   window: PropTypes.func,
 };
 
-export default StocksInSideNavBar;
+export default AdminSideNavBar;
