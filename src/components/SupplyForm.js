@@ -26,6 +26,7 @@ const SupplyForm = () => {
       
     };
     
+    
 
     
     
@@ -51,6 +52,17 @@ const SupplyForm = () => {
       
     
     setvalidated(true);
+  };
+
+  const reset = () => {
+    
+       
+    setSupplierid(null);
+    setItem(null);
+    setQty(null);
+    setPrice(null);
+    setDate(null);
+    
   };
 
   const disablePastDays = () => {
@@ -155,10 +167,13 @@ const SupplyForm = () => {
       
 
 
-      <button variant="primary" type="submit">
+      <button variant="primary" className='btn' type="submit">
         Add
       </button>
-      
+      &nbsp;&nbsp;
+      <button variant="primary" className='btn' type="reset" onClick={reset}>
+        Reset
+      </button>
       
     </Form>
   );

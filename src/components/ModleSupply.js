@@ -3,6 +3,8 @@ import Modal from 'react-bootstrap/Modal'
 import { ModalBody } from 'react-bootstrap'
 import SupplyForm from './SupplyForm'
 
+
+
  
 const SupplyModel = (props) => {
   return (
@@ -21,9 +23,7 @@ const SupplyModel = (props) => {
         <SupplyForm/>
       </ModalBody>
       <Modal.Footer>
-      <button variant="primary" type="reset">
-        Reset
-      </button>
+      
       </Modal.Footer>
     </Modal>
   )

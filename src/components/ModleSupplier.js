@@ -5,6 +5,7 @@ import SupplierForm from './SupplierForm'
 const ModleSupplier = (props) => {
     
     return (
+      
       <Modal
         {...props}
         size="lg"
@@ -19,10 +20,7 @@ const ModleSupplier = (props) => {
         </ModalBody>
 
         <Modal.Footer>
-        {props.supplierDet == null ? (
-          <button className='btn' type="reset">
-            Reset
-          </button>) : " "}
+        
         </Modal.Footer>
       </Modal>
     );

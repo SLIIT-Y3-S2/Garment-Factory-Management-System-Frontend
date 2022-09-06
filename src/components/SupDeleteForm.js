@@ -17,7 +17,7 @@ const SupDeleteForm = ({supplier}) => {
       
         
       const newFormerSupplier = {
-        supplierId: supplier.supplierid,
+        supplierId: supplier.supplierId,
         name: supplier.name,
         mobile: supplier.mobile,
         email: supplier.email,
@@ -32,11 +32,22 @@ const SupDeleteForm = ({supplier}) => {
             alert(err);
           });
         
-         axios
-           .post("http://localhost:5000/formersupplier/", newFormerSupplier)
-           .then((data) => console.log(data))
-           .catch((err) => alert(err));
+        //  axios
+        //    .post("http://localhost:5000/formersupplier/", newFormerSupplier)
+        //    .then((data) => console.log(data))
+        //    .catch((err) => alert(err));
       
+           axios
+          .post(
+            "http://localhost:5000/formersupplier/",
+            newFormerSupplier
+          )
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => {
+            alert(err.message);
+          });
      
     }
 
@@ -51,9 +62,9 @@ const SupDeleteForm = ({supplier}) => {
           </Form.Label>
           
         </Form.Group>
-        <button className="btn" type="submit">
+        <Button variant="danger" className="btn-del" type="submit">
           Delete
-        </button>
+        </Button>
       </Form>
     </>
   );

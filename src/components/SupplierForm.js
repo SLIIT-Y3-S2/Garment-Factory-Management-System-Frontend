@@ -70,6 +70,17 @@ const SupplierForm = ({ det }) => {
     setvalidated(true);
   };
 
+  const reset = () => {
+    
+       
+    setSupplierid(null);
+    setName(null);
+    setMobile(null);
+    setEmail(null);
+    setAddress(null);
+    setItem(null);
+    
+  };
 
   return (
     <Form
@@ -161,11 +172,11 @@ const SupplierForm = ({ det }) => {
       </Form.Group>
 
 
-      <button variant="primary" type="submit">
+      <button variant="primary" className='btn' type="submit">
         {det != null ? "Save Changes" : "Add"}
       </button>
       &nbsp;&nbsp;
-      
+      <button varient="primary" className='btn' type="reset" onClick={reset}>Reset</button>
     </Form>
   );
 };

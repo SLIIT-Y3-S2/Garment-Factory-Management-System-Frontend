@@ -13,6 +13,7 @@ const Supplier = () => {
   return (
       <>
       <SideNavBar/>
+      
       <div
         style={{ marginLeft: "250px", marginTop: "90px", marginRight: "10px" }}
       >
