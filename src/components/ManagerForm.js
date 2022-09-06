@@ -203,11 +203,11 @@ const ManagerForm = ({ data }) => {
         )}
       </Form.Group>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <button className="btn" type="reset" onClick={() => reset()}>
-          Reset
-        </button>
         <button className="btn" type="submit">
           {data != null ? "Save Changes" : "Add Manager"}
+        </button>
+        <button className="btn" type="reset" onClick={() => reset()}>
+          Reset
         </button>
       </div>
     </Form>

@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Table } from "react-bootstrap";
-import { FaPencilAlt, FaTrash, FaUserPlus } from "react-icons/fa";
+import { FaEdit, FaRegTrashAlt, FaUserPlus } from "react-icons/fa";
 import AdminSideNavBar from "./AdminSideNavBar";
 import ManagerModal from "./ManagerModal";
 import EmployeeModalDelete from "./EmployeeModalDelete";
@@ -46,6 +46,7 @@ const AdminDashboard = () => {
           &nbsp;&nbsp;Add Manager
         </button>
         <br />
+        <br />
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -70,18 +71,18 @@ const AdminDashboard = () => {
                 <td>
                   <div>
                     <span>
-                      <FaPencilAlt
+                      <FaEdit
                         onClick={() => {
                           setModalShow(true);
                           setManagerData(manager);
                         }}
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", color: "orange" }}
                         title="Edit Manager"
                       />
                     </span>
                     &nbsp;&nbsp;&nbsp;
                     <span>
-                      <FaTrash
+                      <FaRegTrashAlt
                         onClick={() => {
                           setModalShowDelete(true);
                           setManagerDataDelete(manager);

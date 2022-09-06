@@ -26,7 +26,7 @@ const FormerEmployees = () => {
       <EmpSideNavBar />
       <div className="pageBody">
         <h2>
-          <i>Former Managers</i>
+          <i>Former Employees</i>
         </h2>
         <br />
         <Table striped bordered hover>

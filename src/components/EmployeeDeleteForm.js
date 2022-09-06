@@ -1,6 +1,5 @@
 import React from "react";
 import { Form } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import axios from "axios";
 
@@ -88,9 +87,9 @@ const EmployeeDeleteForm = ({ employee, manager }) => {
             Are You Sure, Do You Want to Delete this Employee?
           </Form.Label>
         </Form.Group>
-        <Button variant="danger" type="submit">
+        <button className="btn-del" type="submit" >
           Delete
-        </Button>
+        </button>
       </Form>
     </>
   );

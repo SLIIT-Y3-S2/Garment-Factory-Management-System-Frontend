@@ -3,7 +3,7 @@ import EmpSideNavBar from "./EmpSideNavBar";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Table } from "react-bootstrap";
-import { FaPencilAlt, FaTrash, FaUserPlus } from "react-icons/fa";
+import { FaRegTrashAlt, FaEdit, FaUserPlus } from "react-icons/fa";
 import EmployeeModalDelete from "./EmployeeModalDelete";
 import EmployeeModal from "./EmployeeModal";
 
@@ -46,7 +46,7 @@ const Employee = () => {
           <FaUserPlus />
           &nbsp;&nbsp;Add Employee
         </button>
-        <br />
+        <br/><br/>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -71,18 +71,18 @@ const Employee = () => {
                 <td>
                   <div>
                     <span>
-                      <FaPencilAlt
+                      <FaEdit
                         onClick={() => {
                           setModalShow(true);
                           setEmployeeData(employee);
                         }}
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", color:"orange" }}
                         title="Edit Employee"
                       />
                     </span>
                     &nbsp;&nbsp;&nbsp;
                     <span>
-                      <FaTrash
+                      <FaRegTrashAlt
                         onClick={() => {
                           setModalShowDelete(true);
                           setEmployeeDataDelete(employee);
