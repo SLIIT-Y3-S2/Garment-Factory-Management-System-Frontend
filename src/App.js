@@ -7,6 +7,7 @@ import FormerBuyers from "./components/FormerBuyers";
 import AdminDashboard from "./components/AdminDashboard";
 import FormerManagers from "./components/FormerManagers";
 import FormerEmployees from "./components/FormerEmployees";
+import Employee from "./components/Employee";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/formermanagers" element={<FormerManagers/>}/>
           <Route path="/buyer" element={<Buyers />} />
           <Route path="/formerbuyer" element={<FormerBuyers />} />
+          <Route path="/employee" element={<Employee />} />
           <Route path="/formeremployees" element={<FormerEmployees/>}/>
         </Routes>
       </BrowserRouter>

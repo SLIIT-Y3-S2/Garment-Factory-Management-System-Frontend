@@ -1,5 +1,5 @@
 import React from "react";
-import { FaUsers } from "react-icons/fa";
+import { FaHistory } from "react-icons/fa";
 import {
   MdSupervisorAccount,
   MdOutlineSupervisorAccount,
