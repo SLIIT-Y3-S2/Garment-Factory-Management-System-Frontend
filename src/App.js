@@ -13,6 +13,10 @@ import FormerEmployees from "./components/FormerEmployees";
 import SupplierForm from "./components/SupplierForm";
 import FormerSuppliersTable from "./components/FormerSuppliers";
 import SupplyTable from "./components/Supply";
+import AddStock from "./components/AddStock";
+import ViewStock from "./components/ViewStock";
+import EditStockModal from "./components/EditStockModal";
+import AppDeleteModal from "./components/AppDeleteModal";
 import Employee from "./components/Employee";
 
 function App() {
@@ -28,6 +32,10 @@ function App() {
           <Route path="/supplier" element={<Supplier/>} />
           <Route path="/formersupplier" element={<FormerSuppliersTable/>} />
           <Route path="/supply" element={<SupplyTable/>} />
+          <Route path="/stocksIn" element={<AddStock />} />
+          <Route path="/viewStocks" element={<ViewStock />} />
+          <Route path="/editStocks" element={<EditStockModal />} />
+          <Route path="/deleteStocks" element={<AppDeleteModal/>}/>
           <Route path="/employee" element={<Employee/>}/>
           <Route path="/formeremployees" element={<FormerEmployees/>}/>
           
