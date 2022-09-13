@@ -1,10 +1,7 @@
 import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
- import ModleSupplier from "./ModleSupplier";
- import ModleDelete from "./SupModleDelete";
-
-
+import ModleSupplier from "./ModleSupplier";
+import ModleDelete from "./SupModleDelete";
 import axios from "axios";
 
 

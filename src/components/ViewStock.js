@@ -69,8 +69,8 @@ const ViewStock = () => {
             <Card>
               <Card.Img variant="top" src="/images/TG.jpg" className="carousel1" />
               <Card.Body>
-              {/* {StocksCount.map((StockCount) => ( */}
-              <Card.Footer className="text-muted">{StockCount.Quantity}</Card.Footer>
+              {/* {StockCount.Quantity} */}
+              <Card.Footer className="text-muted">100</Card.Footer>
               {/* ))} */}
               </Card.Body>
             </Card>
@@ -80,7 +80,7 @@ const ViewStock = () => {
           <Card>
               <Card.Img variant="top" src="/images/TL.jpg" className="carousel1" />
               <Card.Body>
-              <Card.Footer className="text-muted">2 days ago</Card.Footer>
+              <Card.Footer className="text-muted">0</Card.Footer>
               </Card.Body>
             </Card>
           </Carousel.Item>
@@ -88,7 +88,7 @@ const ViewStock = () => {
           <Card>
               <Card.Img variant="top" src="/images/SG.jpg" className="carousel1" />
               <Card.Body>
-              <Card.Footer className="text-muted">3 days ago</Card.Footer>
+              <Card.Footer className="text-muted">0</Card.Footer>
               </Card.Body>
             </Card>
           </Carousel.Item>
@@ -96,7 +96,7 @@ const ViewStock = () => {
           <Card>
               <Card.Img variant="top" src="/images/SL.jpg" className="carousel1" />
               <Card.Body>
-              <Card.Footer className="text-muted">4 days ago</Card.Footer>
+              <Card.Footer className="text-muted">18</Card.Footer>
               </Card.Body>
             </Card>
           </Carousel.Item>
@@ -104,7 +104,7 @@ const ViewStock = () => {
           <Card>
               <Card.Img variant="top" src="/images/TSG.jpg" className="carousel1" />
               <Card.Body>
-              <Card.Footer className="text-muted">4 days ago</Card.Footer>
+              <Card.Footer className="text-muted">0</Card.Footer>
               </Card.Body>
             </Card>
           </Carousel.Item>
@@ -112,7 +112,7 @@ const ViewStock = () => {
           <Card>
               <Card.Img variant="top" src="/images/TSL.jpeg" className="carousel1" />
               <Card.Body>
-              <Card.Footer className="text-muted">4 days ago</Card.Footer>
+              <Card.Footer className="text-muted">0</Card.Footer>
               </Card.Body>
             </Card>
           </Carousel.Item>
@@ -120,7 +120,7 @@ const ViewStock = () => {
           <Card>
               <Card.Img variant="top" src="/images/SK.png" className="carousel1" />
               <Card.Body>
-              <Card.Footer className="text-muted">4 days ago</Card.Footer>
+              <Card.Footer className="text-muted">0</Card.Footer>
               </Card.Body>
             </Card>
           </Carousel.Item>
@@ -128,7 +128,7 @@ const ViewStock = () => {
           <Card>
               <Card.Img variant="top" src="/images/BL.jpg" className="carousel1" />
               <Card.Body>
-              <Card.Footer className="text-muted">4 days ago</Card.Footer>
+              <Card.Footer className="text-muted">70</Card.Footer>
               </Card.Body>
             </Card>
           </Carousel.Item>
@@ -138,14 +138,17 @@ const ViewStock = () => {
         <br />
         <br />
         <br />
+        <button className="btn">Deleted Records</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button className="btn">Stock Report</button>
         <br />
         <br/>
         <br/>
+
         <Table striped bordered hover size="sm">
           <thead>
             <tr>
               <th>Garment Type</th>
-              <th>Unit Price</th>
+              <th>Unit Price Rs.</th>
               <th>Quantity</th>
               <th>Received From</th>
               <th>Stored Section</th>

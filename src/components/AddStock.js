@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import StocksInSideNavBar from "./StocksInSideNavBar";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
-import Modal from "react-bootstrap/Modal";
 
 const AddStock = ({ upd }) => {
   const [validated, setvalidated] = useState(false);
@@ -111,7 +110,7 @@ const AddStock = ({ upd }) => {
       <StocksInSideNavBar />
       <div className="pageBody">
         <div className="title">{upd != null ? "Edit Stock" : "Add Stock"}</div>
-        <div className={upd == null ? "form1" : ""}>
+        <div className={upd != null ? "" : "form1"}>
           <br />
           <Form noValidate validated={validated} onSubmit={onSubmit}>
             <Form.Group className="mb-3">
@@ -246,7 +245,7 @@ const AddStock = ({ upd }) => {
                 feedbackType="invalid"
               />
             </Form.Group>
-            <button className="btn">{upd != null ? "Done" : "Submit"}</button>
+            <button className="btn">{upd != null ? "Done" : "Submit"}</button> &nbsp;
             {upd == null ?
               (<button className='btn' type='reset' onClick={Resetform}> Reset </button>) 
             : ""}
