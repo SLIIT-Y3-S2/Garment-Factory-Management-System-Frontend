@@ -15,6 +15,8 @@ import ViewStock from "./components/ViewStock";
 import EditStockModal from "./components/EditStockModal";
 import AppDeleteModal from "./components/AppDeleteModal";
 import Employee from "./components/Employee";
+import DeliveryDetails from "./components/DeliveryDetails";
+import PendingPackages from "./components/PendingPackages";
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
           <Route path="/deleteStocks" element={<AppDeleteModal/>}/>
           <Route path="/employee" element={<Employee/>}/>
           <Route path="/formeremployees" element={<FormerEmployees/>}/>
+          <Route path="/deliveries" element={<DeliveryDetails/>}/>
+          <Route path="/pending" element={<PendingPackages />} />
           
         </Routes>
       </BrowserRouter>
