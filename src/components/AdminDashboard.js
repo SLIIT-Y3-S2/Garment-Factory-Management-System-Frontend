@@ -84,7 +84,7 @@ const AdminDashboard = () => {
         </Grid>
         <br />
         <br />
-        <Table striped bordered hover>
+        <Table striped bordered hover variant="outline-success">
           <thead>
             <tr>
               <th>Name</th>

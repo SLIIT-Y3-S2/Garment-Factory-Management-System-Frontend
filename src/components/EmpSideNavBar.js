@@ -16,6 +16,9 @@ import Typography from "@mui/material/Typography";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { HRMsidenavbarData } from "../components/SideNavBarData.js";
 import { Link } from "react-router-dom";
+import { IoLogOut } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 const drawerWidth = 240;
 const Theme = createTheme({
@@ -35,6 +38,14 @@ const EmpSideNavBar = (props) => {
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const navigate = useNavigate();
+
+  const handlelogout = () => {
+    sessionStorage.removeItem("token");
+    swal("Success", "Logout Successfully", "success");
+    navigate("/");
   };
 
   const drawer = (
@@ -90,6 +101,14 @@ const EmpSideNavBar = (props) => {
             <Typography variant="h6" noWrap component="div">
               Employee Manager
             </Typography>
+            <button
+              className="logout_btn"
+              style={{ marginLeft: "75%" }}
+              onClick={handlelogout}
+            >
+              <IoLogOut />
+              &nbsp; Log Out
+            </button>
           </Toolbar>
         </AppBar>
         <Box
