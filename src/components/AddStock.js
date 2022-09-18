@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import StocksInSideNavBar from "./StocksInSideNavBar";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
-import Modal from "react-bootstrap/Modal";
 
 const AddStock = ({ upd }) => {
   const [validated, setvalidated] = useState(false);

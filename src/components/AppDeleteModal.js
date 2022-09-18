@@ -1,7 +1,5 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
-import axios from "axios";
-import Button from "react-bootstrap/Button";
 import { ModalBody } from 'react-bootstrap'
 import StockDeleteForm from "./StockDeleteForm";
 

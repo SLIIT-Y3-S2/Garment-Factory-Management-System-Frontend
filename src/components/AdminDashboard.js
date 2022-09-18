@@ -59,7 +59,7 @@ const AdminDashboard = () => {
               <th>Actions</th>
             </tr>
           </thead>
-          {managers.map((manager) => (
+          {managers.filter((Position) => Position.Position !== "Admin").map((manager) => (
             <tbody key={manager._id}>
               <tr>
                 <td>{manager.Name}</td>
