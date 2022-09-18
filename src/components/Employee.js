@@ -6,6 +6,8 @@ import { Table } from "react-bootstrap";
 import { FaRegTrashAlt, FaEdit, FaUserPlus } from "react-icons/fa";
 import EmployeeModalDelete from "./EmployeeModalDelete";
 import EmployeeModal from "./EmployeeModal";
+import { Grid } from "@mui/material";
+import { BsPrinterFill } from "react-icons/bs";
 
 const Employee = () => {
   const [employees, setEmployees] = useState([]);
@@ -32,21 +34,57 @@ const Employee = () => {
     <>
       <EmpSideNavBar />
       <div className="pageBody">
-        <h2>
-          <i>Employees</i>
-        </h2>
-        <button
-          className="btn"
-          style={{ marginLeft: "80%" }}
-          onClick={() => {
+        <Grid container>
+          <Grid item xs={0.1} />
+          <Grid
+            item
+            xs={11.8}
+            style={{
+              backgroundColor: "#63C2C7",
+              height: "80px",
+              borderRadius: "5px",
+              display: "flex",
+              justifyContent: "space-between",
+              padding: "0px 10px 0px 10px",
+              boxShadow: "5px 5px 5px rgba(0,0,0,0.75)",
+            }}
+          >
+            <h2 style={{ color: "#174C4F", marginTop: "20px" }}>Employees</h2>
+            <input
+              type="text"
+              placeholder="Search"
+              style={{
+                width: "45%",
+                height: "60px",
+                borderRadius: "5px",
+                border: "2px solid #174C4F",
+                paddingLeft: "10px",
+                marginTop: "10px",
+              }}
+            />
+            <div>
+              <button className="btn" style={{ marginTop: "20px" }}>
+                <BsPrinterFill />
+                &nbsp;&nbsp;Generate Report
+              </button>
+              &nbsp;&nbsp;
+              <button
+                className="btn"
+                style={{ marginTop: "20px" }}
+                onClick={() => {
             setModalShow(true);
             setEmployeeData(null);
           }}
         >
           <FaUserPlus />
           &nbsp;&nbsp;Add Employee
-        </button>
-        <br/><br/>
+              </button>
+            </div>
+          </Grid>
+          <Grid item xs={0.1} />
+        </Grid>
+        <br />
+        <br />
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -76,7 +114,7 @@ const Employee = () => {
                           setModalShow(true);
                           setEmployeeData(employee);
                         }}
-                        style={{ cursor: "pointer", color:"orange" }}
+                        style={{ cursor: "pointer", color: "orange" }}
                         title="Edit Employee"
                       />
                     </span>

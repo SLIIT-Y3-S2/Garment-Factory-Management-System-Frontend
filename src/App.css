@@ -128,7 +128,10 @@
 
 .btn{
   background-color:#63C2C7;
-  color:white;
+  border: 3px solid #174C4F;
+  border-radius: 5px;
+  color:#174C4F;
+  height: 40px;
 }
 
 .btn:hover {
