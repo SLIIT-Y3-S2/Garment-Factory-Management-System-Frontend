@@ -8,6 +8,8 @@ import ManagerModal from "./ManagerModal";
 import EmployeeModalDelete from "./EmployeeModalDelete";
 import { Grid } from "@mui/material";
 import { BsPrinterFill } from "react-icons/bs";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const AdminDashboard = () => {
   const [managers, setManagers] = useState([]);
@@ -15,6 +17,26 @@ const AdminDashboard = () => {
   const [managerdata, setManagerData] = useState(null);
   const [modalShowDelete, setModalShowDelete] = useState(false);
   const [managerdatadelete, setManagerDataDelete] = useState(null);
+
+  const columns = [
+    { title: "Name", field: "Name" },
+    { title: "Email", field: "Email" },
+    { title: "Mobile Number", field: "Mobile" },
+    { title: "Address", field: "Address" },
+    { title: "NIC", field: "NIC" },
+    {title:"Position",field:"Position"}
+  ]
+
+  const downloadPdf = () => {
+    const doc = new jsPDF();
+    doc.text("All Managers", 90, 10);
+    doc.autoTable({
+      theme: "striped",
+      columns: columns.map((col) => ({ ...col, dataKey: col.field })),
+      body: managers,
+    });
+    doc.save("Managers.pdf");
+  };
 
   useEffect(() => {
     const getManagers = () => {
@@ -62,7 +84,7 @@ const AdminDashboard = () => {
               }}
             />
             <div>
-              <button className="btn" style={{ marginTop: "20px" }}>
+              <button className="btn" style={{ marginTop: "20px" }} onClick={() => downloadPdf()}>
                 <BsPrinterFill />
                 &nbsp;&nbsp;Generate Report
               </button>
