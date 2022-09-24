@@ -2,15 +2,12 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
-
-import SuppliersTable from "./components/SuppliersTable";
 import Supplier from "./components/Suppliers";
 import Buyers from "./components/Buyers";
 import FormerBuyers from "./components/FormerBuyers";
 import AdminDashboard from "./components/AdminDashboard";
 import FormerManagers from "./components/FormerManagers";
 import FormerEmployees from "./components/FormerEmployees";
-import SupplierForm from "./components/SupplierForm";
 import FormerSuppliersTable from "./components/FormerSuppliers";
 import SupplyTable from "./components/Supply";
 import AddStock from "./components/AddStock";
@@ -18,6 +15,7 @@ import ViewStock from "./components/ViewStock";
 import EditStockModal from "./components/EditStockModal";
 import AppDeleteModal from "./components/AppDeleteModal";
 import Employee from "./components/Employee";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -38,7 +36,7 @@ function App() {
           <Route path="/deleteStocks" element={<AppDeleteModal/>}/>
           <Route path="/employee" element={<Employee/>}/>
           <Route path="/formeremployees" element={<FormerEmployees/>}/>
-          
+          <Route path="/login" element={<Login/>}/>
         </Routes>
       </BrowserRouter>
     </div>

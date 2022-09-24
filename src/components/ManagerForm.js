@@ -36,7 +36,6 @@ const ManagerForm = ({ data }) => {
       NIC: nic,
       Position: position,
       Password: password,
-      ConfirmPassword: confirmPassword,
     };
 
     const form = event.currentTarget;
@@ -176,7 +175,7 @@ const ManagerForm = ({ data }) => {
               required
             />
             <Form.Text className="text-muted">
-              Must contain at least one number and one uppercase and lowercase
+              Must contain at least one number and one symbol and one uppercase and lowercase
               letter, and at least 8 or more characters
             </Form.Text>
           </div>
