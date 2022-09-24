@@ -22,6 +22,30 @@ const FormerEmployees = () => {
     getFormerEmployees();
   }, []);
 
+  const filterContent = (employeess, searchTerm) => {
+    const result = employeess.filter(
+      (employee) =>
+        employee.Name.toLowerCase().includes(searchTerm) ||
+        employee.Email.toLowerCase().includes(searchTerm) ||
+        employee.Mobile.toLowerCase().includes(searchTerm) ||
+        employee.Address.toLowerCase().includes(searchTerm) ||
+        employee.NIC.toLowerCase().includes(searchTerm) ||
+        employee.Position.toLowerCase().includes(searchTerm)
+    );
+    setFormerEmployees(result);
+  };
+
+  const handleTextSearch = (e) => {
+    const searchTerm = e.currentTarget.value;
+    console.log(searchTerm);
+    axios.get("http://localhost:5000/formeremployee").then((res) => {
+      if (res.data) {
+        filterContent(res.data, searchTerm);
+      }
+    });
+  };
+
+
   return (
     <>
       <EmpSideNavBar />
@@ -41,9 +65,13 @@ const FormerEmployees = () => {
               boxShadow: "5px 5px 5px rgba(0,0,0,0.75)",
             }}
           >
-            <h2 style={{ color: "#174C4F", marginTop: "20px" }}>Former Employees</h2>
+            <h2 style={{ color: "#174C4F", marginTop: "20px" }}>
+              Former Employees
+            </h2>
             <input
-              type="text"
+              className="form-control"
+              name="searchTerm"
+              type="search"
               placeholder="Search"
               style={{
                 width: "45%",
@@ -53,6 +81,7 @@ const FormerEmployees = () => {
                 paddingLeft: "10px",
                 marginTop: "10px",
               }}
+              onChange={handleTextSearch}
             />
           </Grid>
           <Grid item xs={0.1} />

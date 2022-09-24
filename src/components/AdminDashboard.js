@@ -51,6 +51,30 @@ const AdminDashboard = () => {
     };
     getManagers();
   }, []);
+
+  const filterContent = (managerss, searchTerm) =>  {
+    const result = managerss.filter(
+      (manager) =>
+        manager.Name.toLowerCase().includes(searchTerm) ||
+        manager.Email.toLowerCase().includes(searchTerm) ||
+        manager.Mobile.toLowerCase().includes(searchTerm) ||
+        manager.Address.toLowerCase().includes(searchTerm) ||
+        manager.NIC.toLowerCase().includes(searchTerm) ||
+        manager.Position.toLowerCase().includes(searchTerm)
+    );
+    setManagers( result);
+  }
+
+  const handleTextSearch = (e) => {
+    const searchTerm = e.currentTarget.value;
+    console.log(searchTerm);
+    axios.get("http://localhost:5000/manager").then((res) => {
+      if (res.data) {
+        filterContent(res.data, searchTerm);
+      }
+     });
+    };
+
   return (
     <>
       <AdminSideNavBar />
@@ -72,7 +96,9 @@ const AdminDashboard = () => {
           >
             <h2 style={{ color: "#174C4F", marginTop: "20px" }}>Managers</h2>
             <input
-              type="text"
+              className="form-control"
+              name="searchTerm"
+              type="search"
               placeholder="Search"
               style={{
                 width: "45%",
@@ -82,9 +108,14 @@ const AdminDashboard = () => {
                 paddingLeft: "10px",
                 marginTop: "10px",
               }}
+              onChange={handleTextSearch}
             />
             <div>
-              <button className="btn" style={{ marginTop: "20px" }} onClick={() => downloadPdf()}>
+              <button
+                className="btn"
+                style={{ marginTop: "20px" }}
+                onClick={() => downloadPdf()}
+              >
                 <BsPrinterFill />
                 &nbsp;&nbsp;Generate Report
               </button>

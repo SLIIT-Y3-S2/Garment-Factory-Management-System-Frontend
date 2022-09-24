@@ -22,6 +22,29 @@ const FormerManagers = () => {
     getFormerManagers();
   }, []);
 
+  const filterContent = (managerss, searchTerm) => {
+    const result = managerss.filter(
+      (manager) =>
+        manager.Name.toLowerCase().includes(searchTerm) ||
+        manager.Email.toLowerCase().includes(searchTerm) ||
+        manager.Mobile.toLowerCase().includes(searchTerm) ||
+        manager.Address.toLowerCase().includes(searchTerm) ||
+        manager.NIC.toLowerCase().includes(searchTerm) ||
+        manager.Position.toLowerCase().includes(searchTerm)
+    );
+    setFormerManagers(result);
+  };
+
+  const handleTextSearch = (e) => {
+    const searchTerm = e.currentTarget.value;
+    console.log(searchTerm);
+    axios.get("http://localhost:5000/formeremployee").then((res) => {
+      if (res.data) {
+        filterContent(res.data, searchTerm);
+      }
+    });
+  };
+
   return (
     <>
       <AdminSideNavBar />
@@ -41,9 +64,13 @@ const FormerManagers = () => {
               boxShadow: "5px 5px 5px rgba(0,0,0,0.75)",
             }}
           >
-            <h2 style={{ color: "#174C4F", marginTop: "20px" }}>Former Managers</h2>
+            <h2 style={{ color: "#174C4F", marginTop: "20px" }}>
+              Former Managers
+            </h2>
             <input
-              type="text"
+              className="form-control"
+              name="searchTerm"
+              type="search"
               placeholder="Search"
               style={{
                 width: "45%",
@@ -53,6 +80,7 @@ const FormerManagers = () => {
                 paddingLeft: "10px",
                 marginTop: "10px",
               }}
+              onChange={handleTextSearch}
             />
           </Grid>
           <Grid item xs={0.1} />
