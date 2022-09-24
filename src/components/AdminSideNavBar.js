@@ -51,16 +51,15 @@ const AdminSideNavBar = (props) => {
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    })
-      .then((willLogout) => {
-        if (willLogout) {
-          sessionStorage.removeItem("token");
-          swal("Success", "Logout Successfully", "success");
-          navigate("/");
-        }
-      })
+    }).then((willLogout) => {
+      if (willLogout) {
+        sessionStorage.removeItem("token");
+        swal("Success", "Logout Successfully", "success");
+        navigate("/");
+      }
+    });
   };
-  
+
   const drawer = (
     <div className="drawer">
       <Link to="/">
@@ -73,7 +72,7 @@ const AdminSideNavBar = (props) => {
               <ListItemButton style={{ width: "235px" }}>
                 <ListItemIcon
                   className="drawer_icon"
-                  style={{ color: "white"}}
+                  style={{ color: "white" }}
                 >
                   {data.icon}
                 </ListItemIcon>
