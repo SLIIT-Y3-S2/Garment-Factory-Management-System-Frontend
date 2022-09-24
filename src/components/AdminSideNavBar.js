@@ -45,12 +45,22 @@ const AdminSideNavBar = (props) => {
   const navigate = useNavigate();
 
   const handlelogout = () => {
-    sessionStorage.removeItem("token");
-    swal("Success", "Logout Successfully", "success");
-    navigate("/");
+    swal({
+      title: "Log Out",
+      text: "Are you sure you want to log out?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willLogout) => {
+        if (willLogout) {
+          sessionStorage.removeItem("token");
+          swal("Success", "Logout Successfully", "success");
+          navigate("/");
+        }
+      })
   };
-
-
+  
   const drawer = (
     <div className="drawer">
       <Link to="/">
