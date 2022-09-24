@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Table } from "react-bootstrap";
-import { FaEdit, FaRegTrashAlt, FaUserPlus, } from "react-icons/fa";
+import { FaEdit, FaRegTrashAlt, FaUserPlus } from "react-icons/fa";
 import AdminSideNavBar from "./AdminSideNavBar";
 import ManagerModal from "./ManagerModal";
 import EmployeeModalDelete from "./EmployeeModalDelete";
@@ -24,8 +24,8 @@ const AdminDashboard = () => {
     { title: "Mobile Number", field: "Mobile" },
     { title: "Address", field: "Address" },
     { title: "NIC", field: "NIC" },
-    {title:"Position",field:"Position"}
-  ]
+    { title: "Position", field: "Position" },
+  ];
 
   const downloadPdf = () => {
     const doc = new jsPDF();
@@ -52,7 +52,7 @@ const AdminDashboard = () => {
     getManagers();
   }, []);
 
-  const filterContent = (managerss, searchTerm) =>  {
+  const filterContent = (managerss, searchTerm) => {
     const result = managerss.filter(
       (manager) =>
         manager.Name.toLowerCase().includes(searchTerm) ||
@@ -62,8 +62,8 @@ const AdminDashboard = () => {
         manager.NIC.toLowerCase().includes(searchTerm) ||
         manager.Position.toLowerCase().includes(searchTerm)
     );
-    setManagers( result);
-  }
+    setManagers(result);
+  };
 
   const handleTextSearch = (e) => {
     const searchTerm = e.currentTarget.value;
@@ -72,8 +72,8 @@ const AdminDashboard = () => {
       if (res.data) {
         filterContent(res.data, searchTerm);
       }
-     });
-    };
+    });
+  };
 
   return (
     <>

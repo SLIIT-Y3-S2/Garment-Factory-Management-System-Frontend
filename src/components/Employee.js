@@ -75,7 +75,6 @@ const Employee = () => {
     });
   };
 
-
   return (
     <>
       <EmpSideNavBar />
