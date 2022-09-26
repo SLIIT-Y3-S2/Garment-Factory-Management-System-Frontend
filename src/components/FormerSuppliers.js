@@ -1,7 +1,6 @@
 import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
-
+import { Grid } from "@mui/material";
 
 
 import axios from "axios";
@@ -32,10 +31,42 @@ const FormerSuppliersTable = () => {
   return (
     <>
       <SideNavBar/>
-    <div 
+      <div className="pageBody">
+        <Grid container>
+          <Grid item xs={0.1} />
+          <Grid
+            item
+            xs={11.8}
+            style={{
+              backgroundColor: "#63C2C7",
+              height: "80px",
+              borderRadius: "5px",
+              display: "flex",
+              justifyContent: "space-between",
+              padding: "0px 10px 0px 10px",
+              boxShadow: "5px 5px 5px rgba(0,0,0,0.75)",
+            }}
+          >
+            <h2 style={{ color: "#174C4F", marginTop: "20px" }}>Former Suppliers</h2>
+            <input
+              type="text"
+              placeholder="Search"
+              style={{
+                width: "45%",
+                height: "60px",
+                borderRadius: "5px",
+                border: "2px solid #174C4F",
+                paddingLeft: "10px",
+                marginTop: "10px",
+              }}
+            />
+          </Grid>
+          <Grid item xs={0.1} />
+        </Grid>
+    {/* <div 
         style={{ marginLeft: "250px", marginTop: "90px", marginRight: "10px" }}
     >
-      <i><h1>All Former Suppliers</h1></i>
+      <i><h1>All Former Suppliers</h1></i> */}
       <br /> <br />
       <Table striped bordered hover>
         <thead>
