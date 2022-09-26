@@ -2,6 +2,7 @@ import React from 'react'
 import { Form } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
+import swal from 'sweetalert';
 
 const BuyerDeleteForm = ({ buyer }) => {
     const [validated, setValidated] = useState(false);
@@ -25,10 +26,10 @@ const BuyerDeleteForm = ({ buyer }) => {
             axios
                 .delete(`http://localhost:5000/buyer/${buyer._id}`)
                 .then(() => {
-                    alert("Successfully Deleted")
+                    swal("Deleted", "Successfully Deleted", "success")
                 })
                  .catch((err) => {
-                    alert(err)
+                    swal("Failed", "Deletion not Successful", "error")
                 });
 
             axios

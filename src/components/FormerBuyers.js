@@ -22,6 +22,28 @@ const FormerBuyers = () => {
     getFormerBuyers();
   }, []);
 
+  const filterContent = (fbuyers, searchTerm) => {
+    const result = fbuyers.filter(
+      (buyer) =>
+        buyer.buyerID.toLowerCase().includes(searchTerm) ||
+        buyer.buyerName.toLowerCase().includes(searchTerm) ||
+        buyer.email.toLowerCase().includes(searchTerm) ||
+        buyer.location.toLowerCase().includes(searchTerm) ||
+        buyer.contactNo.toLowerCase().includes(searchTerm)
+    );
+    setFormerBuyer(result);
+  };
+
+  const handleTextSearch = (e) => {
+    const searchTerm = e.currentTarget.value;
+    console.log(searchTerm);
+    axios.get("http://localhost:5000/formerbuyer").then((res) => {
+      if (res.data) {
+        filterContent(res.data, searchTerm);
+      }
+    });
+  };
+
   return (
     <>
       <BuyerSideNavBar />
@@ -45,8 +67,10 @@ const FormerBuyers = () => {
               Former Buyers
             </h2>
             <input
-              type="text"
               placeholder="Search"
+              className="form-control"
+              name="searchTerm"
+              type="search"
               style={{
                 width: "45%",
                 height: "60px",
@@ -55,6 +79,7 @@ const FormerBuyers = () => {
                 paddingLeft: "10px",
                 marginTop: "10px",
               }}
+              onChange={handleTextSearch}
             />
           </Grid>
           <Grid item xs={0.1} />

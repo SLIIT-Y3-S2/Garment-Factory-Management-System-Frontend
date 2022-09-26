@@ -48,6 +48,31 @@ const DeliveryDetails = () => {
     getDeliveries();
   }, []);
 
+  const filterContent = (deliveries, searchTerm) => {
+    const result = deliveries.filter(
+      (delivery) =>
+        delivery.orderID.toLowerCase().includes(searchTerm) ||
+        delivery.buyerID.toLowerCase().includes(searchTerm) ||
+        delivery.buyerName.toLowerCase().includes(searchTerm) ||
+        delivery.location.toLowerCase().includes(searchTerm) ||
+        delivery.date.toLowerCase().includes(searchTerm) ||
+        delivery.time.toLowerCase().includes(searchTerm) ||
+        delivery.vehicleNo.toLowerCase().includes(searchTerm)
+       
+    );
+    setDelivery(result);
+  };
+
+  const handleTextSearch = (e) => {
+    const searchTerm = e.currentTarget.value;
+    console.log(searchTerm);
+    axios.get("http://localhost:5000/delivery").then((res) => {
+      if (res.data) {
+        filterContent(res.data, searchTerm);
+      }
+    });
+  };
+
   return (
     <>
       <BuyerSideNavBar />
@@ -71,8 +96,10 @@ const DeliveryDetails = () => {
               Approved Deliveries
             </h2>
             <input
-              type="text"
               placeholder="Search"
+              className="form-control"
+              name="searchTerm"
+              type="search"
               style={{
                 width: "45%",
                 height: "60px",
@@ -81,6 +108,7 @@ const DeliveryDetails = () => {
                 paddingLeft: "10px",
                 marginTop: "10px",
               }}
+              onChange={handleTextSearch}
             />
             <div>
               <button

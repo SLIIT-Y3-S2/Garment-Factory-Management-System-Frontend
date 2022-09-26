@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import Form from "react-bootstrap/form";
+import swal from 'sweetalert';
 
 const BuyerForm = ({ det }) => {
   const [validated, setvalidated] = useState(false);
@@ -28,13 +29,13 @@ const BuyerForm = ({ det }) => {
       if (det == null) {
         axios
           .post("http://localhost:5000/buyer", newBuyer)
-          .then(() => alert("Successfully Added"))
-          .catch((err) => alert(err));
+          .then(() => swal("Submitted", "Successfully Registered", "success"))
+          .catch((err) => swal("Failed", "Submission not Successful", "error"));
       } else {
         axios
           .put(`http://localhost:5000/buyer/${det._id}`, newBuyer)
-          .then(() => alert("Successfully Updated"))
-          .catch((err) => alert(err));
+          .then(() => swal("Updated", "Successfully Updated", "success"))
+          .catch((err) => swal("Failed", "Update not Successful", "error"));
       }
     }
 

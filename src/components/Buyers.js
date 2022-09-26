@@ -29,6 +29,28 @@ const Buyers = () => {
     getBuyers();
   }, []);
 
+  const filterContent = (buyers, searchTerm) => {
+    const result = buyers.filter(
+      (buyer) =>
+        buyer.buyerID.toLowerCase().includes(searchTerm) ||
+        buyer.buyerName.toLowerCase().includes(searchTerm) ||
+        buyer.email.toLowerCase().includes(searchTerm) ||
+        buyer.location.toLowerCase().includes(searchTerm) ||
+        buyer.contactNo.toLowerCase().includes(searchTerm)
+    );
+    setBuyer(result);
+  };
+
+  const handleTextSearch = (e) => {
+    const searchTerm = e.currentTarget.value;
+    console.log(searchTerm);
+    axios.get("http://localhost:5000/buyer").then((res) => {
+      if (res.data) {
+        filterContent(res.data, searchTerm);
+      }
+    });
+  };
+
   return (
     <>
       <BuyerSideNavBar />
@@ -50,8 +72,10 @@ const Buyers = () => {
           >
             <h2 style={{ color: "#174C4F", marginTop: "20px" }}>Buyers</h2>
             <input
-              type="text"
               placeholder="Search"
+              className="form-control"
+              name="searchTerm"
+              type="search"
               style={{
                 width: "45%",
                 height: "60px",
@@ -60,6 +84,7 @@ const Buyers = () => {
                 paddingLeft: "10px",
                 marginTop: "10px",
               }}
+              onChange={handleTextSearch}
             />
             <div>
               <button

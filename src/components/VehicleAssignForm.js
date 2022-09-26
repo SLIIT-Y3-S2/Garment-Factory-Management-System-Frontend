@@ -2,49 +2,52 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import Form from "react-bootstrap/form";
+import swal from "sweetalert";
 
 const VehicleAssignForm = ({ det }) => {
   const [validated, setvalidated] = useState(false);
-  const [oid, setOrderID] = useState(det.orderID);
-  const [bid, setBuyerID] = useState(det.buyerID);
-  const [bname, setBuyerName] = useState(det.setBuyerName);
+  const [oid, setOrderID] = useState(det.OrderId);
+  const [bid, setBuyerID] = useState(det.BuyerId);
+  const [bname, setBuyerName] = useState(det.BuyerName);
   const [location, setLocation] = useState();
   const [date, setDate] = useState();
   const [time, setTime] = useState();
   const [vno, setVehicleNo] = useState();
-  const [cost, setCost] = useState();
+  const [cost, setCost] = useState(det.TotalCost);
 
   const handleSubmit = (event) => {
-    // const newDelivery = {
-    //   buyerID: bid,
-    //   buyerName: bname,
-    //   email: email,
-    //   location: location,
-    //   contactNo: num,
-    // };
+    const newDelivery = {
+      orderID: oid,
+      buyerID: bid,
+      buyerName: bname,
+      location: location,
+      date: date,
+      time: time,
+      vehicleNo: vno,
+      totalCost: cost,
+    };
 
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     } else {
-      // axios
-      //   .post("http://localhost:5000/buyer", newBuyer)
-      //   .then(() => alert("Successfully Added"))
-      //   .catch((err) => alert(err));
+      axios
+        .post("http://localhost:5000/delivery", newDelivery)
+        .then(() => swal("Submitted", "Successfully Registered", "success"))
+        .catch((err) => swal("Error", "Error Occured", "error"));
     }
     setvalidated(true);
   };
 
   const Resetform = () => {
-    setOrderID(null);
-    setBuyerID(null);
-    setBuyerName(null);
+    setLocation(null);
     setDate(null);
     setTime(null);
     setVehicleNo(null);
-    setCost(null);
   };
+
+ 
 
   return (
     <div>
@@ -57,6 +60,7 @@ const VehicleAssignForm = ({ det }) => {
             value={oid}
             onChange={(e) => setOrderID(e.target.value)}
             required
+            disabled
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="bID">
@@ -67,6 +71,7 @@ const VehicleAssignForm = ({ det }) => {
             value={bid}
             onChange={(e) => setBuyerID(e.target.value)}
             required
+            disabled
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formName">
@@ -77,6 +82,7 @@ const VehicleAssignForm = ({ det }) => {
             value={bname}
             onChange={(e) => setBuyerName(e.target.value)}
             required
+            disabled
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formLocation">
@@ -130,6 +136,7 @@ const VehicleAssignForm = ({ det }) => {
             value={cost}
             onChange={(e) => setCost(e.target.value)}
             required
+            disabled
           />
         </Form.Group>
         <button className="btn" type="submit">

@@ -12,6 +12,45 @@ const PendingPackages = () => {
   const [modalShow, setModalShow] = React.useState(false);
   const [deliverdet, setDeliverdet] = useState();
 
+  useEffect(() => {
+    const getOrders = () => {
+      axios
+        .get("http://localhost:5000/stockOut")
+        .then((res) => {
+          setOrder(res.data);
+        })
+        .catch((err) => {
+          alert(err.msg);
+        });
+    };
+    getOrders();
+  }, []);
+
+  const filterContent = (porders, searchTerm) => {
+    const result = porders.filter(
+      (porder) =>
+        porder.OrderId.toLowerCase().includes(searchTerm) ||
+        porder.BuyerId.toLowerCase().includes(searchTerm) ||
+        porder.BuyerName.toLowerCase().includes(searchTerm) ||
+        porder.GarmentType.toLowerCase().includes(searchTerm) ||
+        porder.Date.toLowerCase().includes(searchTerm) ||
+        porder.Time.toLowerCase().includes(searchTerm)
+    );
+    setOrder(result);
+  };
+
+  const handleTextSearch = (e) => {
+    const searchTerm = e.currentTarget.value;
+    console.log(searchTerm);
+    axios.get("http://localhost:5000/stockOut").then((res) => {
+      if (res.data) {
+
+        filterContent(res.data, searchTerm);
+      }
+    });
+  };
+
+
   return (
     <>
       <BuyerSideNavBar />
@@ -35,8 +74,10 @@ const PendingPackages = () => {
               Pending Deliveries
             </h2>
             <input
-              type="text"
               placeholder="Search"
+              className="form-control"
+              name="searchTerm"
+              type="search"
               style={{
                 width: "45%",
                 height: "60px",
@@ -45,6 +86,7 @@ const PendingPackages = () => {
                 paddingLeft: "10px",
                 marginTop: "10px",
               }}
+              onChange={handleTextSearch}
             />
           </Grid>
           <Grid item xs={0.1} />
@@ -69,25 +111,26 @@ const PendingPackages = () => {
             </tr>
           </thead>
 
-          <tbody>
+          {orders.map((order) => (
+          <tbody key ={order._id}>
             <tr>
               <td>
-                ord001 <Badge bg="dark">Pending</Badge>
+                {order.OrderId} <Badge bg="dark">Pending</Badge>
               </td>
-              <td>buy001</td>
-              <td>ABC Company</td>
-              <td>T-Shirt</td>
-              <td>2021-05-01</td>
-              <td>10:00 AM</td>
-              <td>500.00</td>
-              <td>100</td>
-              <td>50000.00</td>
+              <td>{order.BuyerId}</td>
+              <td>{order.BuyerName}</td>
+              <td>{order.GarmentType}</td>
+              <td>{order.Date}</td>
+              <td>{order.Time}</td>
+              <td>{order.UnitPrice}</td>
+              <td>{order.Quantity}</td>
+              <td>{order.TotalCost}</td>
               <td>
                 <button
                   className="btn"
                   onClick={() => {
                     setModalShow(true);
-                    // setDeliverdet(order);
+                    setDeliverdet(order);
                   }}
                 >
                   Confirm
@@ -95,6 +138,7 @@ const PendingPackages = () => {
               </td>
             </tr>
           </tbody>
+          ))}
         </Table>
 
         <VehicleAssignModal
