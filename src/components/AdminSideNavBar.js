@@ -19,7 +19,6 @@ import { Link } from "react-router-dom";
 import { IoLogOut } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-import LogoutModal from "./LogoutModal.js";
 
 const drawerWidth = 240;
 const Theme = createTheme({
@@ -36,7 +35,6 @@ const Theme = createTheme({
 const AdminSideNavBar = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [openLogoutModal, setOpenLogoutModal] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -116,7 +114,7 @@ const AdminSideNavBar = (props) => {
               </Typography>
               <button
                 className="logout_btn"
-                style={{ marginLeft: "75%" }}
+                style={{ marginLeft: "auto" }}
                 onClick={() => handlelogout()}
               >
                 <IoLogOut />
@@ -163,7 +161,6 @@ const AdminSideNavBar = (props) => {
             </Drawer>
           </Box>
         </Box>
-        <LogoutModal open={openLogoutModal} />
       </ThemeProvider>
     </>
   );
