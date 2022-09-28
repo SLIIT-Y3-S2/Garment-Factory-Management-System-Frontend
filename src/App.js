@@ -17,6 +17,7 @@ import AppDeleteModal from "./components/AppDeleteModal";
 import Employee from "./components/Employee";
 import DeliveryDetails from "./components/DeliveryDetails";
 import PendingPackages from "./components/PendingPackages";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
           <Route path="/formeremployees" element={<FormerEmployees/>}/>
           <Route path="/deliveries" element={<DeliveryDetails/>}/>
           <Route path="/pending" element={<PendingPackages />} />
-          
+          <Route path="/login" element={<Login/>}/>
         </Routes>
       </BrowserRouter>
     </div>
