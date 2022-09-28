@@ -5,7 +5,6 @@ import axios from "axios";
 import BuyerModal from "./BuyerModal";
 import BuyerDeleteModal from "./BuyerDeleteModal";
 import BuyerSideNavBar from "./BuyerSideNavBar";
-import { MdAddCircle } from "react-icons/md";
 import { Grid } from "@mui/material";
 import { BsFillPencilFill, BsPlusCircleFill, BsFillTrashFill } from "react-icons/bs";
 
