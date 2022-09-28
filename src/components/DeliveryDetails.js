@@ -8,9 +8,13 @@ import { Grid } from "@mui/material";
 import { BsPrinterFill } from "react-icons/bs";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Toast from "react-bootstrap/Toast";
 
 const DeliveryDetails = () => {
   const [delivery, setDelivery] = useState([]);
+  const [show, setShow] = useState(false);
 
   const columns = [
     { title: "Order ID", field: "orderID" },
@@ -46,7 +50,21 @@ const DeliveryDetails = () => {
         });
     };
     getDeliveries();
+    
   }, []);
+
+  console.log("delivery", delivery[0]);
+  
+
+  const calc = () =>{
+    let sum = 0;
+    for(let i = 0; i < delivery.length; i++){
+      sum = sum + parseInt(delivery[i].totalCost);
+    }
+    return sum;
+  }
+
+  
 
   const filterContent = (deliveries, searchTerm) => {
     const result = deliveries.filter(
@@ -58,7 +76,6 @@ const DeliveryDetails = () => {
         delivery.date.toLowerCase().includes(searchTerm) ||
         delivery.time.toLowerCase().includes(searchTerm) ||
         delivery.vehicleNo.toLowerCase().includes(searchTerm)
-       
     );
     setDelivery(result);
   };
@@ -72,6 +89,8 @@ const DeliveryDetails = () => {
       }
     });
   };
+
+  
 
   return (
     <>
@@ -158,6 +177,39 @@ const DeliveryDetails = () => {
             </tbody>
           ))}
         </Table>
+        <br />
+
+        <Row>
+          <Col>
+            <Toast
+              onClose={() => setShow(false)}
+              show={show}
+              delay={3000}
+              autohide
+            >
+              <Toast.Header>
+                <img
+                  src="Logo.ico"
+                  className="rounded me-2"
+                  alt=""
+                  height={30}
+                  width={30}
+                />
+                <strong className="me-auto">Sum of Total Cost</strong>
+                <small>WoW</small>
+              </Toast.Header>
+
+              <Toast.Body>
+                <b>{"Rs. "}{calc()}</b>
+              </Toast.Body>
+            </Toast>
+          </Col>
+          <Col xs={2}>
+            <button className="btn" onClick={() => setShow(true)}>
+              Show Total Cost
+            </button>
+          </Col>
+        </Row>
       </div>
     </>
   );
