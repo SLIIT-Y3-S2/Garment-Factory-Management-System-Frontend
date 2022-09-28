@@ -1,8 +1,5 @@
 import Table from "react-bootstrap/Table";
 import { useState, useEffect } from "react";
-
-
-
 import axios from "axios";
 import SideNavBar from "./SupSideNavBar";
 
