@@ -6,6 +6,7 @@ import BuyerSideNavBar from "./BuyerSideNavBar";
 import Badge from "react-bootstrap/Badge";
 import VehicleAssignModal from "./VehicleAssignModal";
 import { Grid } from "@mui/material";
+import { BsCheckCircleFill } from "react-icons/bs";
 
 const PendingPackages = () => {
   const [orders, setOrder] = useState([]);
@@ -133,6 +134,8 @@ const PendingPackages = () => {
                     setDeliverdet(order);
                   }}
                 >
+                  <BsCheckCircleFill />
+                  &nbsp;
                   Confirm
                 </button>
               </td>

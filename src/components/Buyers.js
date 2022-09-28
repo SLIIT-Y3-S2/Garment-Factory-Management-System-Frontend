@@ -7,6 +7,7 @@ import BuyerDeleteModal from "./BuyerDeleteModal";
 import BuyerSideNavBar from "./BuyerSideNavBar";
 import { MdAddCircle } from "react-icons/md";
 import { Grid } from "@mui/material";
+import { BsFillPencilFill, BsPlusCircleFill, BsFillTrashFill } from "react-icons/bs";
 
 const Buyers = () => {
   const [buyers, setBuyer] = useState([]);
@@ -95,7 +96,8 @@ const Buyers = () => {
                   setBuyerdet(null);
                 }}
               >
-                <MdAddCircle />
+                <BsPlusCircleFill />
+                &nbsp;
                 Add Buyer
               </button>
               &nbsp;&nbsp;
@@ -134,6 +136,8 @@ const Buyers = () => {
                       setBuyerdet(buyer);
                     }}
                   >
+                    <BsFillPencilFill />
+                    &nbsp;
                     Update
                   </button>
                 </td>
@@ -145,6 +149,8 @@ const Buyers = () => {
                       setBuyerdelete(buyer);
                     }}
                   >
+                    <BsFillTrashFill />
+                    &nbsp;
                     Delete
                   </button>
                 </td>
