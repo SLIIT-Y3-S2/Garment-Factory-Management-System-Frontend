@@ -113,7 +113,7 @@ const EmpSideNavBar = (props) => {
             </Typography>
             <button
               className="logout_btn"
-              style={{ marginLeft: "75%" }}
+              style={{ marginLeft: "auto" }}
               onClick={handlelogout}
             >
               <IoLogOut />
