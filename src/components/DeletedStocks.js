@@ -3,9 +3,36 @@ import Table from "react-bootstrap/Table";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import StocksInSideNavBar from "./StocksInSideNavBar";
+import { Grid } from "@mui/material";
+import { BsPrinterFill } from "react-icons/bs";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const DeletedStocks = () => {
   const [DeletedStocks, setDeletedStocks] = useState([]);
+
+  const columns = [
+    { title: "Garment Type", field: "GarmentType" },
+    { title: "Unit Price Rs.", field: "UnitPrice" },
+    { title: "Quantity", field: "Quantity" },
+    { title: "Received From", field: "ReceivedFrom" },
+    { title: "Stored Section", field: "StoredSection" },
+    { title: "Stored Bin", field: "StoredBin" },
+    { title: "Date", field: "Date" },
+    { title: "Time", field: "Time" },
+    { title: "Deleted Date", field: "DeletedDate" },
+  ];
+
+  const downloadPdf = () => {
+    const doc = new jsPDF();
+    doc.text("Deleted Stocks Records", 90, 10);
+    doc.autoTable({
+      theme: "striped",
+      columns: columns.map((col) => ({ ...col, dataKey: col.field })),
+      body: DeletedStocks,
+    });
+    doc.save("Deleted Stocks Records on " + Date() + ".pdf");
+  };
 
   useEffect(() => {
     const getDeletedStocks = () => {
@@ -25,10 +52,56 @@ const DeletedStocks = () => {
     <>
       <StocksInSideNavBar />
       <div className="pageBody">
-        <h2>Deleted Records</h2>
+
+      <Grid container>
+          <Grid item xs={0.1} />
+          <Grid
+            item
+            xs={11.8}
+            style={{
+              backgroundColor: "#63C2C7",
+              height: "80px",
+              borderRadius: "5px",
+              display: "flex",
+              justifyContent: "space-between",
+              padding: "0px 10px 0px 10px",
+              boxShadow: "5px 5px 5px rgba(0,0,0,0.75)",
+            }}
+          >
+            <h2 style={{ color: "#174C4F", marginTop: "20px" }}>
+              Deleted Stocks
+            </h2>
+
+            <input
+              type="text"
+              placeholder="Search"
+              style={{
+                width: "45%",
+                height: "60px",
+                borderRadius: "5px",
+                border: "2px solid #174C4F",
+                paddingLeft: "10px",
+                marginTop: "10px",
+              }}
+            />
+            <div>
+              <button
+                className="btn"
+                style={{ marginTop: "20px" }}
+                onClick={() => downloadPdf()}
+              >
+                <BsPrinterFill />
+                &nbsp;&nbsp;Deleted Stock Report
+              </button>
+              &nbsp;&nbsp;
+            </div>
+          </Grid>
+          <Grid item xs={0.1} />
+        </Grid>
 
         <br />
         <br />
+
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -45,32 +118,22 @@ const DeletedStocks = () => {
             </tr>
           </thead>
           
-            <tbody>
-              <tr>
-                <td>6314be37883101a76790aad8</td>
-                <td>Trouser Gents</td>
-                <td>400</td>
-                <td>100</td>
-                <td>H6</td>
-                <td>L9</td>
-                <td>5</td>
-                <td>2022-09-04</td>
-                <td>08:32</td>
-                <td>2022-09-04</td>
-              </tr>
-              <tr>
-                <td>6314be37883101a76795cdp4</td>
-                <td>Trouser Ladies</td>
-                <td>500</td>
-                <td>100</td>
-                <td>H4</td>
-                <td>W9</td>
-                <td>2</td>
-                <td>2022-09-04</td>
-                <td>08:34</td>
-                <td>2022-09-04</td>
+          {DeletedStocks.map((deletedStocks) => (
+          <tbody key={deletedStocks._id}>              
+          <tr>
+                <td>{deletedStocks._id}</td>
+                <td>{deletedStocks.GarmentType}</td>
+                <td>{deletedStocks.UnitPrice}</td>
+                <td>{deletedStocks.Quantity}</td>
+                <td>{deletedStocks.ReceivedFrom}</td>
+                <td>{deletedStocks.StoredSection}</td>
+                <td>{deletedStocks.StoredBin}</td>
+                <td>{deletedStocks.Date}</td>
+                <td>{deletedStocks.Time}</td>
+                <td>{Date()}</td>
               </tr>
             </tbody>
+          ))}
         </Table>
       </div>
     </>
