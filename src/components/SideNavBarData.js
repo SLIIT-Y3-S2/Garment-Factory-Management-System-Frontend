@@ -50,7 +50,7 @@ export const supliersidenavbarData = [
   {
     title: "Former Suppliers",
     path: "/formersupplier",
-    icon: <HiUsers />,
+    icon: <FaHistory />,
     cName: "nav-text",
   },
   {

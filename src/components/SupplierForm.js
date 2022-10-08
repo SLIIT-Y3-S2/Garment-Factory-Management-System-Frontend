@@ -127,7 +127,7 @@ const SupplierForm = ({ det }) => {
           required
         />
         <Form.Control.Feedback type="invalid">
-          Please insert Valid Mobile Number
+          Please insert Valid Mobile Number. Must include 10 digits
         </Form.Control.Feedback>
       </Form.Group>
 

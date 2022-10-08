@@ -12,7 +12,7 @@ const ModleSupplier = (props) => {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton><br/>
           <Modal.Title>{props.supplierDet != null ? ("Edit Supplier") : ("Add Supplier")}</Modal.Title>
         </Modal.Header>
         <ModalBody>

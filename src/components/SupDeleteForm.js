@@ -1,6 +1,5 @@
 import React from "react";
 import { Form } from "react-bootstrap";
-import { Button } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
@@ -62,9 +61,9 @@ const SupDeleteForm = ({supplier}) => {
           </Form.Label>
           
         </Form.Group>
-        <Button variant="danger" className="btn-del" type="submit">
+        <button variant="danger" className="btn-del" type="submit">
           Delete
-        </Button>
+        </button>
       </Form>
     </>
   );

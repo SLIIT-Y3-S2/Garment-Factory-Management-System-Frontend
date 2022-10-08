@@ -96,6 +96,23 @@
   width: 100px;
 }
 
+.btn{
+  background-color:#63C2C7;
+  border: 3px solid #174C4F;
+  border-radius: 5px;
+  color:#174C4F;
+  height: 40px;
+}
+
+
+.btn:hover {
+
+  background-color: #174C4F;
+
+  color:white;
+
+}
+
 .title{
   color: #174C4F;
   font-weight: bolder;
@@ -120,12 +137,17 @@
 .btn-del{
   background-color: rgb(245, 41, 41);
   color: white;
-  border: none;
+  border: 3px solid #174C4F;
   border-radius: 5px;
   padding: 6px;
   width: 100px;
 }
 
+.pageBody {
+  margin-left: 250px;
+  margin-top: 6%;
+  margin-right: 1%;
+}
 .btn{
   background-color:#63C2C7;
   border: 3px solid #174C4F;
