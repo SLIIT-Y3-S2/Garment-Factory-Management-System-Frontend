@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Table } from "react-bootstrap";
 import AdminSideNavBar from "./AdminSideNavBar";
+import { Grid } from "@mui/material";
 
 const FormerManagers = () => {
   const [formerManagers, setFormerManagers] = useState([]);
@@ -21,13 +22,69 @@ const FormerManagers = () => {
     getFormerManagers();
   }, []);
 
+  const filterContent = (managerss, searchTerm) => {
+    const result = managerss.filter(
+      (manager) =>
+        manager.Name.toLowerCase().includes(searchTerm) ||
+        manager.Email.toLowerCase().includes(searchTerm) ||
+        manager.Mobile.toLowerCase().includes(searchTerm) ||
+        manager.Address.toLowerCase().includes(searchTerm) ||
+        manager.NIC.toLowerCase().includes(searchTerm) ||
+        manager.Position.toLowerCase().includes(searchTerm)
+    );
+    setFormerManagers(result);
+  };
+
+  const handleTextSearch = (e) => {
+    const searchTerm = e.currentTarget.value;
+    console.log(searchTerm);
+    axios.get("http://localhost:5000/formeremployee").then((res) => {
+      if (res.data) {
+        filterContent(res.data, searchTerm);
+      }
+    });
+  };
+
   return (
     <>
       <AdminSideNavBar />
       <div className="pageBody">
-        <h2>
-          <i>Former Managers</i>
-        </h2>
+        <Grid container>
+          <Grid item xs={0.1} />
+          <Grid
+            item
+            xs={11.8}
+            style={{
+              backgroundColor: "#63C2C7",
+              height: "80px",
+              borderRadius: "5px",
+              display: "flex",
+              justifyContent: "space-between",
+              padding: "0px 10px 0px 10px",
+              boxShadow: "5px 5px 5px rgba(0,0,0,0.75)",
+            }}
+          >
+            <h2 style={{ color: "#174C4F", marginTop: "20px" }}>
+              Former Managers
+            </h2>
+            <input
+              className="form-control"
+              name="searchTerm"
+              type="search"
+              placeholder="Search"
+              style={{
+                width: "45%",
+                height: "60px",
+                borderRadius: "5px",
+                border: "2px solid #174C4F",
+                paddingLeft: "10px",
+                marginTop: "10px",
+              }}
+              onChange={handleTextSearch}
+            />
+          </Grid>
+          <Grid item xs={0.1} />
+        </Grid>
         <br />
         <Table striped bordered hover>
           <thead>

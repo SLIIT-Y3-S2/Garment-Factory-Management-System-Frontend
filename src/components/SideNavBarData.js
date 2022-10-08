@@ -50,7 +50,7 @@ export const supliersidenavbarData = [
   {
     title: "Former Suppliers",
     path: "/formersupplier",
-    icon: <HiUsers />,
+    icon: <FaHistory />,
     cName: "nav-text",
   },
   {
@@ -77,13 +77,13 @@ export const buyersidenavbarData = [
   },
   {
     title: "Pending Deliveries",
-    path: "#",
+    path: "/pending",
     icon: <MdPendingActions />,
     cName: "nav-text",
   },
   {
     title: "Approved Deliveries",
-    path: "#",
+    path: "/deliveries",
     icon: <TbTruckDelivery />,
     cName: "nav-text",
   },

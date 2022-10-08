@@ -1,8 +1,9 @@
+import React from "react";
 import Modal from "react-bootstrap/Modal";
 import { ModalBody } from "react-bootstrap";
-import BuyerForm from "./BuyerForm";
+import VehicleAssignForm from "./VehicleAssignForm";
 
-const BuyerModal = (props) => {
+const VehicleAssignModal = (props) => {
   return (
     <Modal
       {...props}
@@ -11,12 +12,10 @@ const BuyerModal = (props) => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title>
-          {props.buyerdet != null ? "Edit Buyer" : "Add Buyer"}
-        </Modal.Title>
+        <Modal.Title>Assign Vehicle and Confirm Delivery</Modal.Title>
       </Modal.Header>
       <ModalBody>
-        <BuyerForm det={props.buyerdet} />
+        <VehicleAssignForm det={props.deliverdet} />
       </ModalBody>
 
       <Modal.Footer>
@@ -28,4 +27,4 @@ const BuyerModal = (props) => {
   );
 };
 
-export default BuyerModal;
+export default VehicleAssignModal;

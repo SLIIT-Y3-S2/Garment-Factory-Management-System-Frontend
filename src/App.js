@@ -18,6 +18,9 @@ import Employee from "./components/Employee";
 import OutStock from "./components/OutStock";
 import DeletedStocks from "./components/DeletedStocks";
 import CPendingPackages from "./components/CPendingPackages";
+import DeliveryDetails from "./components/DeliveryDetails";
+import PendingPackages from "./components/PendingPackages";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -41,6 +44,9 @@ function App() {
           <Route path="/stocksOut" element={<OutStock/>} />
           <Route path="/deletedStocks" element={<DeletedStocks/>} />
           <Route path="/pendingPack" element={<CPendingPackages/>} />
+          <Route path="/deliveries" element={<DeliveryDetails/>}/>
+          <Route path="/pending" element={<PendingPackages />} />
+          <Route path="/login" element={<Login/>}/>
         </Routes>
       </BrowserRouter>
     </div>
