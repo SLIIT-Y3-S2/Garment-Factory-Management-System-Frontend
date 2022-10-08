@@ -3,9 +3,6 @@ import Modal from 'react-bootstrap/Modal'
 import { ModalBody } from 'react-bootstrap'
 import SupplyForm from './SupplyForm'
 
-
-
- 
 const SupplyModel = (props) => {
   return (
     <Modal

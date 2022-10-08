@@ -110,7 +110,7 @@ const StocksInSideNavBar = (props) => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              Stocks In
+              Stocks Management
             </Typography>
             <button
               className="logout_btn"

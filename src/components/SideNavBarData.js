@@ -28,13 +28,13 @@ export const stockInsidenavbarData = [
   },
   {
     title: "Stocks Out",
-    path: "/subtypes",
+    path: "/stocksOut",
     icon: <BiLogOut />,
     cName: "nav-text",
   },
   {
     title: "Pending Packages",
-    path: "/viewgroups",
+    path: "/pendingPack",
     icon: <MdPendingActions />,
     cName: "nav-text",
   },

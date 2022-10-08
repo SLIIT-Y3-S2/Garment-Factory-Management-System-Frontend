@@ -15,6 +15,9 @@ import ViewStock from "./components/ViewStock";
 import EditStockModal from "./components/EditStockModal";
 import AppDeleteModal from "./components/AppDeleteModal";
 import Employee from "./components/Employee";
+import OutStock from "./components/OutStock";
+import DeletedStocks from "./components/DeletedStocks";
+import CPendingPackages from "./components/CPendingPackages";
 import DeliveryDetails from "./components/DeliveryDetails";
 import PendingPackages from "./components/PendingPackages";
 import Login from "./components/Login";
@@ -38,6 +41,9 @@ function App() {
           <Route path="/deleteStocks" element={<AppDeleteModal/>}/>
           <Route path="/employee" element={<Employee/>}/>
           <Route path="/formeremployees" element={<FormerEmployees/>}/>
+          <Route path="/stocksOut" element={<OutStock/>} />
+          <Route path="/deletedStocks" element={<DeletedStocks/>} />
+          <Route path="/pendingPack" element={<CPendingPackages/>} />
           <Route path="/deliveries" element={<DeliveryDetails/>}/>
           <Route path="/pending" element={<PendingPackages />} />
           <Route path="/login" element={<Login/>}/>
