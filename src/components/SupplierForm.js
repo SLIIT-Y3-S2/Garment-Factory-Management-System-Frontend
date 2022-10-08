@@ -3,7 +3,6 @@ import { useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 
-
 const SupplierForm = ({ det }) => {
   const [validated, setvalidated] = useState(false);
   const [supplierid, setSupplierid] = useState(det != null ? det.supplierId : "");
