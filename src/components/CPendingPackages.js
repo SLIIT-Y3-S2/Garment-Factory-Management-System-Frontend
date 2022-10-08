@@ -153,7 +153,7 @@ const CPendingPackages = () => {
               <tr>
                 <td>
                   {order.OrderId}
-                  <Badge bg="dark">Accepted</Badge>
+                  <Badge bg="dark">Pending</Badge>
                 </td>
                 <td>{order.BuyerId}</td>
                 <td>{order.BuyerName}</td>
