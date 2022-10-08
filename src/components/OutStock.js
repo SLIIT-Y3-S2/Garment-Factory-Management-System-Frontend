@@ -155,8 +155,7 @@ const OutStock = () => {
     if (form.checkValidity() === false) {
       event.preventDefault();
       // event.stopPropagation();
-    } else {
-      if( (parseInt(TotalStock.Quantity) >= parseInt(newStockOutType.Quantity)) || (parseInt(StocksCount2.Quantity) >= parseInt(newStockOutType.Quantity)) || (parseInt(StocksCount3.Quantity) >= parseInt(newStockOutType.Quantity)) || (parseInt(StocksCount4.Quantity) >= parseInt(newStockOutType.Quantity)) || (parseInt(StocksCount5.Quantity) >= parseInt(newStockOutType.Quantity)) || (parseInt(StocksCount6.Quantity) >= parseInt(newStockOutType.Quantity)) || (parseInt(StocksCount7.Quantity) >= parseInt(newStockOutType.Quantity)) || (parseInt(StocksCount8.Quantity) >= parseInt(newStockOutType.Quantity))){
+    } 
         axios
         .post("http://localhost:5000/stockout", newStockOutType)
         .then(() => alert("You release a stock"))
@@ -179,9 +178,7 @@ const OutStock = () => {
           .then(() => alert("stock updated"))
           .catch((err) => alert(err));
         console.log(newStockOutType.Quantity);
-      } else {
-        alert("You don't have enough blouse stock");
-      }
+      } 
 
       if (newStockOutType.GarmentType === "Trouser Gens" && parseInt(StocksCount2.Quantity) >= parseInt(newStockOutType.Quantity)) {
         console.log(StocksCount2.Quantity);
@@ -199,9 +196,7 @@ const OutStock = () => {
           .then(() => alert("stock updated"))
           .catch((err) => alert(err));
         console.log(newStockOutType.Quantity);
-      } else {
-        alert("You don't have enough trouser gens stock");
-      }
+      } 
 
       if (newStockOutType.GarmentType === "Trouser Ladies" && parseInt(StocksCount3.Quantity) >= parseInt(newStockOutType.Quantity)) {
         console.log(StocksCount3.Quantity);
@@ -310,11 +305,10 @@ const OutStock = () => {
           .catch((err) => alert(err));
         console.log(newStockOutType.Quantity);
       }
-    }
-    else {
-      alert("You don't have enough stock");
-    }
-    }
+      else {
+        alert("You don't have enough stock");
+      }
+
     setvalidated(true);
   };
 
@@ -428,10 +422,11 @@ const OutStock = () => {
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3">
-              <button >TotalCost</button>
+              <Form.Label >TotalCost</Form.Label>
               <Form.Control
                 type="number"
                 //placeholder="Enter total cost"
+                disabled
                 value={UnitPrice * Quantity}
                 onChange={(e) => setTotalCost(e.target.value)}
                 required
