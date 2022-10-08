@@ -9,24 +9,47 @@ import SideNavBar from "./SupSideNavBar";
 
 const FormerSuppliersTable = () => {
  
-  const [suppliers, setSupplier] = useState([]);
+  const [formersuppliers, setFormerSupplier] = useState([]);
  
 
 
   useEffect(() => {
-    const getSuppliers = () => {
+    const getFormerSuppliers = () => {
       axios
         .get("http://localhost:5000/formersupplier")
         .then((res) => {
-          setSupplier(res.data);
+          setFormerSupplier(res.data);
           console.log(res.data);
         })
         .catch((err) => {
           alert(err.msg);
         });
     };
-    getSuppliers();
+    getFormerSuppliers();
   }, []);
+
+  const filterContent = (fsuppliers, searchTerm) => {
+    const result = fsuppliers.filter(
+      (supplier) =>
+      supplier.supplierId.toLowerCase().includes(searchTerm) ||
+      supplier.name.toLowerCase().includes(searchTerm) ||
+      supplier.mobile.toLowerCase().includes(searchTerm) ||
+      supplier.email.toLowerCase().includes(searchTerm) ||
+      supplier.address.toLowerCase().includes(searchTerm) ||
+      supplier.item.toLowerCase().includes(searchTerm)
+    );
+    setFormerSupplier(result);
+  };
+
+  const handleTextSearch = (e) => {
+    const searchTerm = e.currentTarget.value;
+    console.log(searchTerm);
+    axios.get("http://localhost:5000/formersupplier").then((res) => {
+      if (res.data) {
+        filterContent(res.data, searchTerm);
+      }
+    });
+  };
   
   return (
     <>
@@ -49,8 +72,10 @@ const FormerSuppliersTable = () => {
           >
             <h2 style={{ color: "#174C4F", marginTop: "20px" }}>Former Suppliers</h2>
             <input
-              type="text"
               placeholder="Search"
+              className="form-control"
+              name="searchTerm"
+              type="search"
               style={{
                 width: "45%",
                 height: "60px",
@@ -59,6 +84,7 @@ const FormerSuppliersTable = () => {
                 paddingLeft: "10px",
                 marginTop: "10px",
               }}
+              onChange={handleTextSearch}
             />
           </Grid>
           <Grid item xs={0.1} />
@@ -80,7 +106,7 @@ const FormerSuppliersTable = () => {
             
           </tr>
         </thead>
-        {suppliers.map((supplier) => (
+        {formersuppliers.map((supplier) => (
           <tbody key={supplier._id}>
             <tr>
               <td>{supplier.supplierId}</td>

@@ -9,10 +9,10 @@ import { FaUserPlus } from "react-icons/fa";
 import axios from "axios";
 
 const Supplier = () => {
+  const [suppliers, setSupplier] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [modaldelete, setModalDelete] = useState(false);
-  const [suppliers, setSupplier] = useState([]);
   const [supplierDet, setSupplierDet] = useState("");
   const [supplierdelete, setSupplierDelete] = useState("");
 
@@ -30,6 +30,29 @@ const Supplier = () => {
     };
     getSuppliers();
   }, []);
+
+  const filterContent = (suppliers, searchTerm) => {
+    const result = suppliers.filter(
+      (supplier) =>
+        supplier.supplierId.toLowerCase().includes(searchTerm) ||
+        supplier.name.toLowerCase().includes(searchTerm) ||
+        supplier.mobile.toLowerCase().includes(searchTerm) ||
+        supplier.email.toLowerCase().includes(searchTerm) ||
+        supplier.address.toLowerCase().includes(searchTerm) ||
+        supplier.item.toLowerCase().includes(searchTerm)
+    );
+    setSupplier(result);
+  };
+
+  const handleTextSearch = (e) => {
+    const searchTerm = e.currentTarget.value;
+    console.log(searchTerm);
+    axios.get("http://localhost:5000/supplier").then((res) => {
+      if (res.data) {
+        filterContent(res.data, searchTerm);
+      }
+    });
+  };
 
   return (
     <>
@@ -52,8 +75,10 @@ const Supplier = () => {
           >
             <h2 style={{ color: "#174C4F", marginTop: "20px" }}>Suppliers</h2>
             <input
-              type="text"
               placeholder="Search"
+              className="form-control"
+              name="searchTerm"
+              type="search"
               style={{
                 width: "45%",
                 height: "60px",
@@ -62,6 +87,7 @@ const Supplier = () => {
                 paddingLeft: "10px",
                 marginTop: "10px",
               }}
+              onChange={handleTextSearch}
             />
             <div>
               <button

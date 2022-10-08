@@ -12,7 +12,7 @@ import SideNavBar from "./SupSideNavBar";
 
 const SupplyTable = () => {
 const [modalShow, setModalShow] = useState(false); 
-  const [supply, setSupply] = useState([]);
+  const [Supply, setSupply] = useState([]);
 
   const columns = [
 
@@ -21,6 +21,7 @@ const [modalShow, setModalShow] = useState(false);
     { title: "Item", field: "item" },
     { title: "Quantity", field: "qty" },
     { title: "Unit Price", field: "price" },
+    { title: "Total Price", field: "totalp" },
     { title: "Date", field: "date" },
     
   ];
@@ -31,7 +32,7 @@ const [modalShow, setModalShow] = useState(false);
     doc.autoTable({
       theme: "striped",
       columns: columns.map((col) => ({ ...col, dataKey: col.field })),
-      body: supply,
+      body: Supply,
     });
     doc.save("Supplies.pdf");
   };
@@ -52,6 +53,28 @@ const [modalShow, setModalShow] = useState(false);
     };
     getSupply();
   }, []);
+
+  const filterContent = (supplies, searchTerm) => {
+    const result = supplies.filter(
+      (supply) =>
+        supply.supplierId.toLowerCase().includes(searchTerm) ||
+        supply.item.toLowerCase().includes(searchTerm) ||
+        supply.date.toLowerCase().includes(searchTerm)
+    );
+    setSupply(result);
+  };
+
+  const handleTextSearch = (e) => {
+    const searchTerm = e.currentTarget.value;
+    console.log(searchTerm);
+    axios.get("http://localhost:5000/supply").then((res) => {
+      if (res.data) {
+        filterContent(res.data, searchTerm);
+      }
+    });
+  };
+
+  
   
   return (
     <>
@@ -74,8 +97,10 @@ const [modalShow, setModalShow] = useState(false);
           >
             <h2 style={{ color: "#174C4F", marginTop: "20px" }}>Supply Details</h2>
             <input
-              type="text"
               placeholder="Search"
+              className="form-control"
+              name="searchTerm"
+              type="search"
               style={{
                 width: "45%",
                 height: "60px",
@@ -84,6 +109,7 @@ const [modalShow, setModalShow] = useState(false);
                 paddingLeft: "10px",
                 marginTop: "10px",
               }}
+              onChange={handleTextSearch}
             />
             <div>
               <button className="btn" style={{ marginTop: "20px" }} onClick={() => downloadPdf()}>
@@ -107,18 +133,12 @@ const [modalShow, setModalShow] = useState(false);
           <Grid item xs={0.1} />
         </Grid>
       
-    {/* <div 
-        style={{ marginLeft: "250px", marginTop: "90px", marginRight: "10px" }}
-    >
-      <i><h1>Supply Details</h1></i>
-      <br /> <br />
-      <button style={{marginLeft: "80%"}} className='btn' variant="success" onClick={() => setModalShow(true)}><FaUserPlus/>&nbsp;&nbsp;Add New Supply</button>
-       */}
+   
       <br /><br />
       <Table striped bordered hover>
         <thead>
           <tr>
-          <th>Supplier ID</th>
+          <th>supplier ID</th>
             <th>Item</th>
             <th>Quantity</th>
             <th>Unit Price</th>
@@ -128,14 +148,14 @@ const [modalShow, setModalShow] = useState(false);
             
           </tr>
         </thead>
-        {supply.map((supply) => (
+        {Supply.map((supply) => (
           <tbody key={supply._id}>
             <tr>
               <td>{supply.supplierId}</td>
               <td>{supply.item}</td>
               <td>{supply.qty}</td>
               <td>{supply.price}</td>
-              <td>{supply.qty*supply.price}</td>
+              <td>{supply.totalp}</td>
               <td>{supply.date}</td>
               
              

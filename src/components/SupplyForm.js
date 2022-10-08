@@ -22,6 +22,7 @@ const SupplyForm = () => {
       item: item,
       qty: qty,
       price: price,
+      totalp: qty*price,
       date: date,
       
     };
