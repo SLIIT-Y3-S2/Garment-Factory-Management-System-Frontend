@@ -215,25 +215,24 @@ const ViewStock = () => {
     <div>
       <StocksInSideNavBar />
       <div className="pageBody">
-        <Carousel variant="dark" slide={false}>
+        <Carousel variant="dark">
           <Carousel.Item>
           
             <Card>
               <Card.Img variant="top" src="/images/TG.jpg" className="carousel1" />
               <Card.Body>
               {[StocksCount2].map((StockCount2) => (
-              <Card.Footer className="text-muted">Gens Trousers --- {StockCount2.Quantity}</Card.Footer>
+              <Card.Footer className="text-muted">Gens Trousers --- {StockCount2.Quantity} <br/> <br/> <br/></Card.Footer>
               ))}
               </Card.Body>
             </Card>
-
           </Carousel.Item>
           <Carousel.Item>
           <Card>
               <Card.Img variant="top" src="/images/TL.jpg" className="carousel1" />
               <Card.Body>
               {[StocksCount3].map((StockCount3) => (
-              <Card.Footer className="text-muted">Ladies Trousers --- {StockCount3.Quantity}</Card.Footer>
+              <Card.Footer className="text-muted">Ladies Trousers --- {StockCount3.Quantity} <br/> <br/> <br/></Card.Footer>
               ))}
               </Card.Body>
             </Card>
@@ -243,7 +242,7 @@ const ViewStock = () => {
               <Card.Img variant="top" src="/images/SG.jpg" className="carousel1" />
               <Card.Body>
               {[StocksCount4].map((StockCount4) => (
-              <Card.Footer className="text-muted">Gens Shirts --- {StockCount4.Quantity}</Card.Footer>
+              <Card.Footer className="text-muted">Gens Shirts --- {StockCount4.Quantity} <br/> <br/> <br/></Card.Footer>
               ))}              </Card.Body>
             </Card>
           </Carousel.Item>
@@ -252,7 +251,7 @@ const ViewStock = () => {
               <Card.Img variant="top" src="/images/SL.jpg" className="carousel1" />
               <Card.Body>
               {[StocksCount5].map((StockCount5) => (
-              <Card.Footer className="text-muted">Ladies Shirts --- {StockCount5.Quantity}</Card.Footer>
+              <Card.Footer className="text-muted">Ladies Shirts --- {StockCount5.Quantity} <br/> <br/> <br/></Card.Footer>
               ))}
               </Card.Body>
             </Card>
@@ -262,7 +261,7 @@ const ViewStock = () => {
               <Card.Img variant="top" src="/images/TSG.jpg" className="carousel1" />
               <Card.Body>
               {[StocksCount6].map((StockCount6) => (
-              <Card.Footer className="text-muted">Gens T-Shirts --- {StockCount6.Quantity}</Card.Footer>
+              <Card.Footer className="text-muted">Gens T-Shirts --- {StockCount6.Quantity} <br/> <br/> <br/></Card.Footer>
               ))}
               </Card.Body>
             </Card>
@@ -272,7 +271,7 @@ const ViewStock = () => {
               <Card.Img variant="top" src="/images/TSL.jpeg" className="carousel1" />
               <Card.Body>
               {[StocksCount7].map((StockCount7) => (
-              <Card.Footer className="text-muted">Ladies T-Shirts --- {StockCount7.Quantity}</Card.Footer>
+              <Card.Footer className="text-muted">Ladies T-Shirts --- {StockCount7.Quantity} <br/> <br/> <br/></Card.Footer>
               ))}
               </Card.Body>
             </Card>
@@ -282,7 +281,7 @@ const ViewStock = () => {
               <Card.Img variant="top" src="/images/SK.png" className="carousel1" />
               <Card.Body>
               {[StocksCount8].map((StockCount8) => (
-              <Card.Footer className="text-muted">Skirts --- {StockCount8.Quantity}</Card.Footer>
+              <Card.Footer className="text-muted">Skirts --- {StockCount8.Quantity} <br/> <br/> <br/></Card.Footer>
               ))}
               </Card.Body>
             </Card>
@@ -292,7 +291,7 @@ const ViewStock = () => {
               <Card.Img variant="top" src="/images/BL.jpg" className="carousel1" />
               <Card.Body>
               {[StocksCount].map((StockCount) => (
-              <Card.Footer className="text-muted">Blouses --- {StockCount.Quantity}</Card.Footer>
+              <Card.Footer className="text-muted">Blouses --- {StockCount.Quantity} <br/> <br/> <br/></Card.Footer>
               ))}
               </Card.Body>
             </Card>
