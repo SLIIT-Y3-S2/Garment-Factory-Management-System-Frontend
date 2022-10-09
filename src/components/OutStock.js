@@ -305,9 +305,6 @@ const OutStock = () => {
           .catch((err) => alert(err));
         console.log(newStockOutType.Quantity);
       }
-      else {
-        alert("You don't have enough stock");
-      }
 
     setvalidated(true);
   };
