@@ -31,11 +31,20 @@ const AddStock = ({ upd }) => {
 
   const disablePastDays = () => {
     const today = new Date();
-    // const dd = String(today.getDate());
-    // const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-    // const yyyy = today.getFullYear();
-    return today;
+    const dd = String(today.getDate()).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    const yyyy = today.getFullYear();
+    return yyyy + "-" + mm + "-" + dd;
   };
+
+  const disableFutureDays = () => {
+    const date = new Date();
+    const ddf = String(date.getDate()).padStart(2, "0");
+    const mmf = String(date.getMonth() + 1).padStart(2, "0"); //January is 0!
+    const yyyyf = date.getFullYear();
+    return yyyyf + "-" + mmf + "-" + ddf;
+  };
+
 
   useEffect(() => {
     const getTotalStock = () => {
@@ -417,6 +426,7 @@ const AddStock = ({ upd }) => {
                 type="date"
                 placeholder="Date"
                 min={disablePastDays()}
+                max={disableFutureDays()}
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 required
