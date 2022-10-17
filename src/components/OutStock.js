@@ -26,10 +26,18 @@ const OutStock = () => {
 
   const disablePastDays = () => {
     const today = new Date();
-    // const dd = String(today.getDate());
-    // const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-    // const yyyy = today.getFullYear();
-    return today;
+    const dd = String(today.getDate()).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    const yyyy = today.getFullYear();
+    return yyyy + "-" + mm + "-" + dd;
+  };
+
+  const disableFutureDays = () => {
+    const date = new Date();
+    const ddf = String(date.getDate()).padStart(2, "0");
+    const mmf = String(date.getMonth() + 1).padStart(2, "0"); //January is 0!
+    const yyyyf = date.getFullYear();
+    return yyyyf + "-" + mmf + "-" + ddf;
   };
 
   useEffect(() => {
@@ -155,159 +163,239 @@ const OutStock = () => {
     if (form.checkValidity() === false) {
       event.preventDefault();
       // event.stopPropagation();
-    } 
-        axios
+    }
+    //   axios
+    //   .post("http://localhost:5000/stockout", newStockOutType)
+    //   .then(() => alert("You release a stock"))
+    //   .catch((err) => alert(err));
+    // console.log(newStockOutType);
+
+    if (
+      newStockOutType.GarmentType === "Blouse" &&
+      parseInt(TotalStock.Quantity) >= parseInt(newStockOutType.Quantity)
+    ) {
+      axios
         .post("http://localhost:5000/stockout", newStockOutType)
         .then(() => alert("You release a stock"))
         .catch((err) => alert(err));
       console.log(newStockOutType);
 
-      if (newStockOutType.GarmentType === "Blouse" && parseInt(TotalStock.Quantity) >= parseInt(newStockOutType.Quantity)) {
-        console.log(TotalStock.Quantity);
-        const totalStock =
-          parseInt(TotalStock.Quantity) - parseInt(newStockOutType.Quantity);
-        console.log(totalStock);
-        const newTotalStock = {
-          Quantity: totalStock,
-        };
-        axios
-          .put(
-            "http://localhost:5000/totalstock/6315fef3997af5bc72182029",
-            newTotalStock
-          )
-          .then(() => alert("stock updated"))
-          .catch((err) => alert(err));
-        console.log(newStockOutType.Quantity);
-      } 
+      console.log(TotalStock.Quantity);
+      const totalStock =
+        parseInt(TotalStock.Quantity) - parseInt(newStockOutType.Quantity);
+      console.log(totalStock);
+      const newTotalStock = {
+        Quantity: totalStock,
+      };
+      axios
+        .put(
+          "http://localhost:5000/totalstock/6315fef3997af5bc72182029",
+          newTotalStock
+        )
+        .then(() => alert("stock updated"))
+        .catch((err) => alert(err));
+      console.log(newStockOutType.Quantity);
+    }
 
-      if (newStockOutType.GarmentType === "Trouser Gens" && parseInt(StocksCount2.Quantity) >= parseInt(newStockOutType.Quantity)) {
-        console.log(StocksCount2.Quantity);
-        const totalStock2 =
-          parseInt(StocksCount2.Quantity) - parseInt(newStockOutType.Quantity);
-        console.log(totalStock2);
-        const newTotalStock = {
-          Quantity: totalStock2,
-        };
-        axios
-          .put(
-            "http://localhost:5000/totalstock/631627656073cde3af8406d0",
-            newTotalStock
-          )
-          .then(() => alert("stock updated"))
-          .catch((err) => alert(err));
-        console.log(newStockOutType.Quantity);
-      } 
+    else if (
+      newStockOutType.GarmentType === "Trouser Gens" &&
+      parseInt(StocksCount2.Quantity) >= parseInt(newStockOutType.Quantity)
+    ) {
 
-      if (newStockOutType.GarmentType === "Trouser Ladies" && parseInt(StocksCount3.Quantity) >= parseInt(newStockOutType.Quantity)) {
-        console.log(StocksCount3.Quantity);
-        const totalStock3 =
-          parseInt(StocksCount3.Quantity) - parseInt(newStockOutType.Quantity);
-        console.log(totalStock3);
-        const newTotalStock = {
-          Quantity: totalStock3,
-        };
-        axios
-          .put(
-            "http://localhost:5000/totalstock/631627bf6073cde3af8406d1",
-            newTotalStock
-          )
-          .then(() => alert("stock updated"))
-          .catch((err) => alert(err));
-        console.log(newStockOutType.Quantity);
-      }
+      axios
+        .post("http://localhost:5000/stockout", newStockOutType)
+        .then(() => alert("You release a stock"))
+        .catch((err) => alert(err));
+      console.log(newStockOutType);
 
-      if (newStockOutType.GarmentType === "Shirt Gens" && parseInt(StocksCount4.Quantity) >= parseInt(newStockOutType.Quantity)) {
-        console.log(StocksCount4.Quantity);
-        const totalStock4 =
-          parseInt(StocksCount4.Quantity) - parseInt(newStockOutType.Quantity);
-        console.log(totalStock4);
-        const newTotalStock = {
-          Quantity: totalStock4,
-        };
-        axios
-          .put(
-            "http://localhost:5000/totalstock/6331e6da01ab7efdac54d9c8",
-            newTotalStock
-          )
-          .then(() => alert("stock updated"))
-          .catch((err) => alert(err));
-        console.log(newStockOutType.Quantity);
-      }
+      console.log(StocksCount2.Quantity);
+      const totalStock2 =
+        parseInt(StocksCount2.Quantity) - parseInt(newStockOutType.Quantity);
+      console.log(totalStock2);
+      const newTotalStock = {
+        Quantity: totalStock2,
+      };
+      axios
+        .put(
+          "http://localhost:5000/totalstock/631627656073cde3af8406d0",
+          newTotalStock
+        )
+        .then(() => alert("stock updated"))
+        .catch((err) => alert(err));
+      console.log(newStockOutType.Quantity);
+    }
 
-      if (newStockOutType.GarmentType === "Shirt Ladies" && parseInt(StocksCount5.Quantity) >= parseInt(newStockOutType.Quantity)) {
-        console.log(StocksCount5.Quantity);
-        const totalStock5 =
-          parseInt(StocksCount5.Quantity) - parseInt(newStockOutType.Quantity);
-        console.log(totalStock5);
-        const newTotalStock = {
-          Quantity: totalStock5,
-        };
-        axios
-          .put(
-            "http://localhost:5000/totalstock/6331e6ec01ab7efdac54d9ca",
-            newTotalStock
-          )
-          .then(() => alert("stock updated"))
-          .catch((err) => alert(err));
-        console.log(newStockOutType.Quantity);
-      }
+    else if (
+      newStockOutType.GarmentType === "Trouser Ladies" &&
+      parseInt(StocksCount3.Quantity) >= parseInt(newStockOutType.Quantity)
+    ) {
 
-      if (newStockOutType.GarmentType === "TShirt Gens" && parseInt(StocksCount6.Quantity) >= parseInt(newStockOutType.Quantity)) {
-        console.log(StocksCount6.Quantity);
-        const totalStock6 =
-          parseInt(StocksCount6.Quantity) - parseInt(newStockOutType.Quantity);
-        console.log(totalStock6);
-        const newTotalStock = {
-          Quantity: totalStock6,
-        };
-        axios
-          .put(
-            "http://localhost:5000/totalstock/6331e70401ab7efdac54d9cc",
-            newTotalStock
-          )
-          .then(() => alert("stock updated"))
-          .catch((err) => alert(err));
-        console.log(newStockOutType.Quantity);
-      }
+      axios
+        .post("http://localhost:5000/stockout", newStockOutType)
+        .then(() => alert("You release a stock"))
+        .catch((err) => alert(err));
+      console.log(newStockOutType);
 
-      if (newStockOutType.GarmentType === "TShirt Ladies" && parseInt(StocksCount7.Quantity) >= parseInt(newStockOutType.Quantity)) {
-        console.log(StocksCount7.Quantity);
-        const totalStock7 =
-          parseInt(StocksCount7.Quantity) - parseInt(newStockOutType.Quantity);
-        console.log(totalStock7);
-        const newTotalStock = {
-          Quantity: totalStock7,
-        };
-        axios
-          .put(
-            "http://localhost:5000/totalstock/6331e71501ab7efdac54d9ce",
-            newTotalStock
-          )
-          .then(() => alert("stock updated"))
-          .catch((err) => alert(err));
-        console.log(newStockOutType.Quantity);
-      }
+      console.log(StocksCount3.Quantity);
+      const totalStock3 =
+        parseInt(StocksCount3.Quantity) - parseInt(newStockOutType.Quantity);
+      console.log(totalStock3);
+      const newTotalStock = {
+        Quantity: totalStock3,
+      };
+      axios
+        .put(
+          "http://localhost:5000/totalstock/631627bf6073cde3af8406d1",
+          newTotalStock
+        )
+        .then(() => alert("stock updated"))
+        .catch((err) => alert(err));
+      console.log(newStockOutType.Quantity);
+    }
 
-      if (newStockOutType.GarmentType === "Skirt" && parseInt(StocksCount8.Quantity) >= parseInt(newStockOutType.Quantity)) {
-        console.log(StocksCount8.Quantity);
-        const totalStock8 =
-          parseInt(StocksCount8.Quantity) - parseInt(newStockOutType.Quantity);
-        console.log(totalStock8);
-        const newTotalStock = {
-          Quantity: totalStock8,
-        };
-        axios
-          .put(
-            "http://localhost:5000/totalstock/6331e73501ab7efdac54d9d0",
-            newTotalStock
-          )
-          .then(() => alert("stock updated"))
-          .catch((err) => alert(err));
-        console.log(newStockOutType.Quantity);
-      }
-      else {
-        alert("You don't have enough stock");
-      }
+    else if (
+      newStockOutType.GarmentType === "Shirt Gens" &&
+      parseInt(StocksCount4.Quantity) >= parseInt(newStockOutType.Quantity)
+    ) {
+
+      axios
+        .post("http://localhost:5000/stockout", newStockOutType)
+        .then(() => alert("You release a stock"))
+        .catch((err) => alert(err));
+      console.log(newStockOutType);
+
+      console.log(StocksCount4.Quantity);
+      const totalStock4 =
+        parseInt(StocksCount4.Quantity) - parseInt(newStockOutType.Quantity);
+      console.log(totalStock4);
+      const newTotalStock = {
+        Quantity: totalStock4,
+      };
+      axios
+        .put(
+          "http://localhost:5000/totalstock/6331e6da01ab7efdac54d9c8",
+          newTotalStock
+        )
+        .then(() => alert("stock updated"))
+        .catch((err) => alert(err));
+      console.log(newStockOutType.Quantity);
+    }
+
+    else if (
+      newStockOutType.GarmentType === "Shirt Ladies" &&
+      parseInt(StocksCount5.Quantity) >= parseInt(newStockOutType.Quantity)
+    ) {
+
+      axios
+        .post("http://localhost:5000/stockout", newStockOutType)
+        .then(() => alert("You release a stock"))
+        .catch((err) => alert(err));
+      console.log(newStockOutType);
+
+      console.log(StocksCount5.Quantity);
+      const totalStock5 =
+        parseInt(StocksCount5.Quantity) - parseInt(newStockOutType.Quantity);
+      console.log(totalStock5);
+      const newTotalStock = {
+        Quantity: totalStock5,
+      };
+      axios
+        .put(
+          "http://localhost:5000/totalstock/6331e6ec01ab7efdac54d9ca",
+          newTotalStock
+        )
+        .then(() => alert("stock updated"))
+        .catch((err) => alert(err));
+      console.log(newStockOutType.Quantity);
+    }
+
+    else if (
+      newStockOutType.GarmentType === "TShirt Gens" &&
+      parseInt(StocksCount6.Quantity) >= parseInt(newStockOutType.Quantity)
+    ) {
+
+      axios
+        .post("http://localhost:5000/stockout", newStockOutType)
+        .then(() => alert("You release a stock"))
+        .catch((err) => alert(err));
+      console.log(newStockOutType);
+
+      console.log(StocksCount6.Quantity);
+      const totalStock6 =
+        parseInt(StocksCount6.Quantity) - parseInt(newStockOutType.Quantity);
+      console.log(totalStock6);
+      const newTotalStock = {
+        Quantity: totalStock6,
+      };
+      axios
+        .put(
+          "http://localhost:5000/totalstock/6331e70401ab7efdac54d9cc",
+          newTotalStock
+        )
+        .then(() => alert("stock updated"))
+        .catch((err) => alert(err));
+      console.log(newStockOutType.Quantity);
+    }
+
+    else if (
+      newStockOutType.GarmentType === "TShirt Ladies" &&
+      parseInt(StocksCount7.Quantity) >= parseInt(newStockOutType.Quantity)
+    ) {
+
+      axios
+        .post("http://localhost:5000/stockout", newStockOutType)
+        .then(() => alert("You release a stock"))
+        .catch((err) => alert(err));
+      console.log(newStockOutType);
+
+      console.log(StocksCount7.Quantity);
+      const totalStock7 =
+        parseInt(StocksCount7.Quantity) - parseInt(newStockOutType.Quantity);
+      console.log(totalStock7);
+      const newTotalStock = {
+        Quantity: totalStock7,
+      };
+      axios
+        .put(
+          "http://localhost:5000/totalstock/6331e71501ab7efdac54d9ce",
+          newTotalStock
+        )
+        .then(() => alert("stock updated"))
+        .catch((err) => alert(err));
+      console.log(newStockOutType.Quantity);
+    }
+
+    else if (
+      newStockOutType.GarmentType === "Skirt" &&
+      parseInt(StocksCount8.Quantity) >= parseInt(newStockOutType.Quantity)
+    ) {
+
+      axios
+        .post("http://localhost:5000/stockout", newStockOutType)
+        .then(() => alert("You release a stock"))
+        .catch((err) => alert(err));
+      console.log(newStockOutType);
+
+      console.log(StocksCount8.Quantity);
+      const totalStock8 =
+        parseInt(StocksCount8.Quantity) - parseInt(newStockOutType.Quantity);
+      console.log(totalStock8);
+      const newTotalStock = {
+        Quantity: totalStock8,
+      };
+      axios
+        .put(
+          "http://localhost:5000/totalstock/6331e73501ab7efdac54d9d0",
+          newTotalStock
+        )
+        .then(() => alert("stock updated"))
+        .catch((err) => alert(err));
+      console.log(newStockOutType.Quantity);
+    }
+
+    else {
+      alert("Not enough stock");
+    }
 
     setvalidated(true);
   };
@@ -422,7 +510,7 @@ const OutStock = () => {
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label >TotalCost</Form.Label>
+              <Form.Label>TotalCost</Form.Label>
               <Form.Control
                 type="number"
                 //placeholder="Enter total cost"
@@ -441,6 +529,7 @@ const OutStock = () => {
                 type="date"
                 placeholder="Date"
                 min={disablePastDays()}
+                max={disableFutureDays()}
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 required
