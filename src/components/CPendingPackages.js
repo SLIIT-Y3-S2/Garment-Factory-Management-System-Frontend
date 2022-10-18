@@ -11,8 +11,7 @@ import "jspdf-autotable";
 
 const CPendingPackages = () => {
   const [order, setOrder] = useState([]);
-  const [modalShow, setModalShow] = React.useState(false);
-  const [deliverdet, setDeliverdet] = useState();
+ 
 
   const columns = [
     { title: "Order ID", field: "OrderId" },
